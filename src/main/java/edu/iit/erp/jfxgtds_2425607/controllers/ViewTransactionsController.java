@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,36 +74,41 @@ public class ViewTransactionsController implements Initializable {
         System.out.println("Table items: " + billTable.getItems().size());
     }
 
-    private void loadInitialData() {
+    private void loadInitialData(){
         List<Bill> bills = new ArrayList<>();
-        bills.add(new Bill("2025_03_19_0001", "cake", 32.0, 32.0, 32.0, 4, 128.0, 784.0, 34));
-        bills.add(new Bill("2025_03_19_0001", "lemon", 54.0, 54.0, 54.0, 4, 216.0, 784.0, 35));
-        bills.add(new Bill("2025_03_19_0001", "coffee", 44.0, 44.0, 44.0, 10, 440.0, 784.0, 37));
-        bills.add(new Bill("2025_03_19_0002", "coffee", 60.0, 60.0, 60.0, 4, 240.0, 522.0, 36));
-        bills.add(new Bill("2025_03_19_0002", "latte", 43.0, 43.0, 43.0, 4, 172.0, 522.0, 35));
-        bills.add(new Bill("2025_03_19_0002", "macrons", 22.0, 22.0, 22.0, 5, 110.0, 522.0, 37));
-        bills.add(new Bill("2025_03_19_0003", "tea", 20.0, 20.0, 20.0, 3, 60.0, 315.0, 31));
-        bills.add(new Bill("2025_03_19_0003", "brownie", 55.0, 55.0, 55.0, 2, 110.0, 315.0, 31));
-        bills.add(new Bill("2025_03_19_0003", "croissant", 48.0, 48.0, 48.0, 3, 144.0, 315.0, 31));
-        bills.add(new Bill("2025_03_19_0004", "cappuccino", 50.0, 50.0, 50.0, 6, 300.0, 674.0, 39));
-        bills.add(new Bill("2025_03_19_0004", "tart", 62.0, 62.0, 62.0, 4, 248.0, 674.0, 39));
-        bills.add(new Bill("2025_03_19_0004", "donut", 21.0, 21.0, 21.0, 6, 126.0, 674.0, 39));
-        bills.add(new Bill("2025_03_19_0005", "mocha", 45.0, 45.0, 45.0, 5, 225.0, 400.0, 38));
-        bills.add(new Bill("2025_03_19_0005", "muffin", 36.0, 36.0, 36.0, 4, 144.0, 400.0, 38));
-        bills.add(new Bill("2025_03_19_0005", "sandwich", 65.0, 65.0, 65.0, 5, 325.0, 400.0, 38));
-        bills.add(new Bill("2025_03_19_0006", "espresso", 30.0, 30.0, 30.0, 2, 60.0, 180.0, 30));
-        bills.add(new Bill("2025_03_19_0006", "bagel", 25.0, 25.0, 25.0, 3, 75.0, 180.0, 30));
-        bills.add(new Bill("2025_03_19_0006", "milkshake", 45.0, 45.0, 45.0, 1, 45.0, 180.0, 30));
-        bills.add(new Bill("2025_03_19_0007", "iced_tea", 40.0, 40.0, 40.0, 3, 120.0, 345.0, 32));
-        bills.add(new Bill("2025_03_19_0007", "pastry", 38.0, 38.0, 38.0, 5, 190.0, 345.0, 32));
-        bills.add(new Bill("2025_03_19_0007", "smoothie", 35.0, 35.0, 35.0, 1, 35.0, 345.0, 32));
-        bills.add(new Bill("2025_03_19_0008", "hot_chocolate", 42.0, 42.0, 42.0, 2, 84.0, 246.0, 40));
-        bills.add(new Bill("2025_03_19_0008", "toast", 28.0, 28.0, 28.0, 3, 84.0, 246.0, 40));
-        bills.add(new Bill("2025_03_19_0008", "tart", 26.0, 26.0, 26.0, 3, 78.0, 246.0, 40));
+        ImportTransactionsController importTransactions = new ImportTransactionsController();
+        String filePath = importTransactions.getSelectedFilePath();
 
-        billData.addAll(bills);
+        File file = new File(filePath);
+        try (BufferedReader br = new BufferedReader(new FileReader(file));) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                Bill bill = getBill(line);
+                bills.add(bill);
+            }
 
-        System.out.println("Loaded " + bills.size() + " bills.");
+            billData.addAll(bills);
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println(e);
+        }
+    }
+
+    private static Bill getBill(String line) {
+        String[] data = line.split(",");
+
+        Bill bill = new Bill(
+                data[0],                        //Bill Number
+                data[1],                        // Item code
+                Double.parseDouble(data[2]),    // Internal Price
+                Double.parseDouble(data[3]),    // Discount Price
+                Double.parseDouble(data[4]),    // Sale Price
+                Integer.parseInt(data[5]),      // Quantity
+                Double.parseDouble(data[6]),    // Line Total
+                Double.parseDouble(data[7]),    // Grand Total
+                Integer.parseInt(data[8])       // Checksum
+        );
+        return bill;
     }
 
     // Method to add a new bill to the table

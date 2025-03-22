@@ -43,7 +43,7 @@
     <top>
         <VBox prefHeight="214.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
             <children>
-                <StackPane prefHeight="100.0" style="-fx-background-color: #3C0048;">
+                <StackPane prefHeight="150.0" style="-fx-background-color: #3C0048;">
                     <children>
                         <Label text="View Transactions" textFill="WHITE">
                             <font>

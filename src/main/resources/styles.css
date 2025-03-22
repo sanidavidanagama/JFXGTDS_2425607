@@ -90,9 +90,6 @@
 
 
 
-.border-pane .top .vbox .stack-pane {
-    -fx-background-color: #2E3440; /* Dark blue-gray color */
-}
 
 .tool-bar {
     -fx-background-color: transparent;
@@ -101,23 +98,38 @@
 }
 
 
-.scroll-bar:vertical, .scroll-bar:horizontal {
-    -fx-start-margin: 10px;
-    -fx-background-color: transparent; /* Make the track background transparent */
-    -fx-padding: 0; /* Remove padding */
-    -fx-opacity: 0; /* Make the scroll bar completely transparent */
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
 }
 
-.scroll-bar {
-    -fx-border-width: 0; /* Remove border */
-    -fx-border-color: transparent; /* Make border color transparent */
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: none;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: transparent; /* Make the thumb transparent */
-    -fx-background-radius: 0; /* Remove rounded corners */
+    -fx-background-color: #3C0048;
+    -fx-background-insets: 2;
+    -fx-background-radius: 5;
 }
 
-.scroll-bar .thumb:hover {
-    -fx-background-color: transparent; /* Keep thumb transparent on hover */
+.scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
 }
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* Import Transactions */
