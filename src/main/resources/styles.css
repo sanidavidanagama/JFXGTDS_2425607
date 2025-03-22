@@ -1,0 +1,123 @@
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Trebuchet MS";
+    -fx-text-fill: #3C0048;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3C0048;
+    -fx-font-family: "Trebuchet MS" !important;
+}
+
+.table-column {
+    -fx-background-color: #C0A2C6;
+    -fx-text-fill: #3C0048;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.separator {
+    -fx-opacity: 0;
+}
+
+.pane .label {
+    -fx-font-size: 11px !important;
+}
+
+.tool-bar .button {
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: #3C0048;
+    -fx-border-width: 2px;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Trebuchet MS';
+    -fx-padding: 8px 20px;
+    -fx-cursor: hand;
+    -fx-text-fill: #3C0048;
+}
+
+.tool-bar .button:hover {
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: #C0A2C6;
+    -fx-border-width: 2px;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Trebuchet MS';
+    -fx-padding: 8px 20px;
+    -fx-cursor: hand;
+    -fx-text-fill: #C0A2C6;
+    -fx-fill: #3C0048;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent transparent #FFFFFF transparent;
+    -fx-border-width: 2px 0 2px 0;
+}
+
+.table-cell {
+    -fx-border-color: transparent; /* Removes vertical borders between cells */
+}
+
+
+.table-column .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Trebuchet MS';
+}
+
+.table-view .column-header {
+    -fx-background-color: #3C0048; /* Replace with your desired color */
+}
+
+
+.table-view .label {
+    -fx-font-family: "Trebuchet MS";
+}
+
+
+.border-pane .top .vbox .pane {
+    -fx-background-color: #3C0048;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.border-pane .top .vbox .hbox .button {
+    -fx-background-color: #3C0048;
+    -fx-text-fill: #FFFFFF;
+}
+
+
+
+.border-pane .top .vbox .stack-pane {
+    -fx-background-color: #2E3440; /* Dark blue-gray color */
+}
+
+.tool-bar {
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-tile-alignment: center;
+}
+
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-start-margin: 10px;
+    -fx-background-color: transparent; /* Make the track background transparent */
+    -fx-padding: 0; /* Remove padding */
+    -fx-opacity: 0; /* Make the scroll bar completely transparent */
+}
+
+.scroll-bar {
+    -fx-border-width: 0; /* Remove border */
+    -fx-border-color: transparent; /* Make border color transparent */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: transparent; /* Make the thumb transparent */
+    -fx-background-radius: 0; /* Remove rounded corners */
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: transparent; /* Keep thumb transparent on hover */
+}
