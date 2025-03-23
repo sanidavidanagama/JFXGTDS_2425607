@@ -24,7 +24,7 @@ public class Bill {
         this.checksum = checksum;
     }
 
-    // Getters (must match the names used in PropertyValueFactory)
+    // Getters
     public String getBillNumber() { return billNumber; }
     public String getItemCode() { return itemCode; }
     public double getInternalPrice() { return internalPrice; }

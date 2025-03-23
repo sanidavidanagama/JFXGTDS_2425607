@@ -3,13 +3,18 @@ package edu.iit.erp.jfxgtds_2425607.controllers;
 import edu.iit.erp.jfxgtds_2425607.models.Bill;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -63,12 +68,51 @@ public class ViewTransactionsController implements Initializable {
 
         File file = new File(importedFilePath);
         fileNameLabelViewTransactions.setText(file.getName());
-        loadInitialData();
+        loadCSVData();
     }
 
-    public String getImportedFilePath() {
-        return importedFilePath;
+    @FXML
+    void onImportTransactionsButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/import-transactions.fxml"));
+            Parent root = loader.load();
+
+            root.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
     }
+
+    @FXML
+    void onValidateTransactionsButtonClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onHomeButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/home-page.fxml"));
+            Parent root = loader.load();
+
+            root.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            System.out.println(e);
+
+        }
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -92,7 +136,7 @@ public class ViewTransactionsController implements Initializable {
         System.out.println("Table items: " + billTable.getItems().size());
     }
 
-    private void loadInitialData(){
+    private void loadCSVData(){
         List<Bill> bills = new ArrayList<>();
         String filePath = importedFilePath;
         System.out.println("filePath: " + filePath);

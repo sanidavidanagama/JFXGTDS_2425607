@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +19,7 @@
    <children>
       <StackPane prefHeight="150.0" styleClass="header">
          <children>
-            <Label alignment="CENTER" text="Import Transactions" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" styleClass="heading-bar-label" text="Import Transactions" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font></Label>
@@ -40,6 +41,11 @@
                               <Button layoutX="70.0" layoutY="202.0" mnemonicParsing="false" onAction="#onBrowseButtonClick" prefHeight="50.0" prefWidth="160.0" styleClass="browse-button" text="Browse Files" />
                            </children>
                         </Pane>
+                        <ToolBar layoutY="470.0" prefHeight="100.0" prefWidth="390.0">
+                           <items>
+                              <Button mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="&lt; Home" />
+                           </items>
+                        </ToolBar>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="570.0" prefWidth="90.0">
@@ -63,7 +69,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Button layoutY="168.0" mnemonicParsing="false" onAction="#onImportTransactionsButtonClick" prefHeight="50.0" prefWidth="160.0" styleClass="import-button" text="Import" />
+                              <Button layoutY="168.0" mnemonicParsing="false" onAction="#onImportButtonClick" prefHeight="50.0" prefWidth="160.0" styleClass="import-button" text="Import" />
                               <Label fx:id="statusMessageLabel" layoutY="101.0" prefHeight="17.0" prefWidth="530.0" text="Please import a file with .csv format." />
                               <Label fx:id="fileNameLabel" layoutY="128.0" prefHeight="17.0" prefWidth="530.0" />
                            </children>

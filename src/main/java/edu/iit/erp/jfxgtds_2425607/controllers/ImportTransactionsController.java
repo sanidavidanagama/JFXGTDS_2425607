@@ -8,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -42,6 +40,10 @@ public class ImportTransactionsController {
         this.filePathForCSV = filePathForCSV;
     }
 
+    public void setFilePathInput(TextField filePathInput) {
+        this.filePathInput = filePathInput;
+    }
+
     @FXML
     void onBrowseButtonClick(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -64,9 +66,8 @@ public class ImportTransactionsController {
         }
     }
 
-
     @FXML
-    void onImportTransactionsButtonClick(ActionEvent event) {
+    void onImportButtonClick(ActionEvent event) {
         String filePath = filePathInput.getText();
 
         if (filePath.isEmpty()) {
@@ -123,4 +124,21 @@ public class ImportTransactionsController {
         }
     }
 
+    @FXML
+    void onHomeButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/home-page.fxml"));
+            Parent root = loader.load();
+
+            root.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            System.out.println(e);
+
+        }
+    }
 }

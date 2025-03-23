@@ -37,9 +37,10 @@
          <children>
                 <ToolBar prefHeight="100.0" prefWidth="1280.0">
                     <items>
-                        <Button fx:id="onImportTransactionsButtonClick" mnemonicParsing="false" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="&lt; Import Transactions" />
-                        <Separator prefHeight="90.0" prefWidth="823.0" />
-                        <Button fx:id="onValidateTransactionsButtonClick" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="217.0" styleClass="validate-transactions-button" text="Validate Transactions &gt;" />
+                        <Button mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="&lt; Home" />
+                  <Button mnemonicParsing="false" onAction="#onImportTransactionsButtonClick" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="/ Import Transactions" />
+                        <Separator prefHeight="90.0" prefWidth="600.0" />
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onValidateTransactionsButtonClick" prefHeight="26.0" prefWidth="217.0" styleClass="validate-transactions-button" text="Validate Transactions &gt;" />
                     </items>
                 </ToolBar>
          </children></Pane>
@@ -49,7 +50,7 @@
             <children>
                 <StackPane prefHeight="150.0" styleClass="header">
                     <children>
-                        <Label text="View Transactions" textFill="WHITE">
+                        <Label styleClass="heading-bar-label" text="View Transactions" textFill="WHITE">
                             <font>
                                 <Font size="32.0" />
                             </font>
@@ -58,7 +59,7 @@
                 </StackPane>
             <AnchorPane prefWidth="1280.0">
                <children>
-                  <Label fx:id="fileNameLabelViewTransactions" layoutY="6.0" prefHeight="34.0" prefWidth="670.0" />
+                  <Label fx:id="fileNameLabelViewTransactions" layoutY="6.0" prefHeight="30.0" prefWidth="670.0" />
                </children>
             </AnchorPane>
             </children>
