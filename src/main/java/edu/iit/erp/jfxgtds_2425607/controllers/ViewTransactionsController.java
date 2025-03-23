@@ -5,8 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
@@ -47,8 +49,26 @@ public class ViewTransactionsController implements Initializable {
     @FXML
     private TableColumn<Bill, Integer> checksumColumn;
 
+    @FXML
+    private Label fileNameLabelViewTransactions;
 
     private ObservableList<Bill> billData = FXCollections.observableArrayList();
+
+
+    private String importedFilePath;
+
+    public void setImportedFilePath(String importedFilePath) {
+        this.importedFilePath = importedFilePath;
+        System.out.println("importedFilePath: " + importedFilePath);
+
+        File file = new File(importedFilePath);
+        fileNameLabelViewTransactions.setText(file.getName());
+        loadInitialData();
+    }
+
+    public String getImportedFilePath() {
+        return importedFilePath;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,17 +87,15 @@ public class ViewTransactionsController implements Initializable {
 
         // Set the data to the table
         billTable.setItems(billData);
-
         // Load initial data
-        loadInitialData();
 
         System.out.println("Table items: " + billTable.getItems().size());
     }
 
     private void loadInitialData(){
         List<Bill> bills = new ArrayList<>();
-        ImportTransactionsController importTransactions = new ImportTransactionsController();
-        String filePath = importTransactions.getSelectedFilePath();
+        String filePath = importedFilePath;
+        System.out.println("filePath: " + filePath);
 
         File file = new File(filePath);
         try (BufferedReader br = new BufferedReader(new FileReader(file));) {
@@ -116,6 +134,7 @@ public class ViewTransactionsController implements Initializable {
         billData.add(bill);
         System.out.println("Added bill: " + bill.getBillNumber());
     }
+
 }
 
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -14,7 +15,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.iit.erp.jfxgtds_2425607.controllers.ViewTransactionsController">
     <center>
-        <TableView fx:id="billTable" maxWidth="1206.0" prefHeight="400.0">
+        <TableView fx:id="billTable" prefHeight="400.0">
             <columns>
                 <TableColumn fx:id="billNumberColumn" prefWidth="106.0" text="Bill Number" />
                 <TableColumn fx:id="itemCodeColumn" prefWidth="106.0" text="Item Code" />
@@ -31,19 +32,22 @@
             </columnResizePolicy>
         </TableView>
     </center>
-    <left>
-        <Pane BorderPane.alignment="CENTER" />
-    </left>
-    <right>
-        <Pane BorderPane.alignment="CENTER" />
-    </right>
     <bottom>
-        <Pane minHeight="30.0" BorderPane.alignment="CENTER" />
+        <Pane minHeight="30.0" BorderPane.alignment="CENTER">
+         <children>
+                <ToolBar prefHeight="100.0" prefWidth="1280.0">
+                    <items>
+                        <Button fx:id="onImportTransactionsButtonClick" mnemonicParsing="false" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="&lt; Import Transactions" />
+                        <Separator prefHeight="90.0" prefWidth="823.0" />
+                        <Button fx:id="onValidateTransactionsButtonClick" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="217.0" styleClass="validate-transactions-button" text="Validate Transactions &gt;" />
+                    </items>
+                </ToolBar>
+         </children></Pane>
     </bottom>
     <top>
         <VBox prefHeight="214.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
             <children>
-                <StackPane prefHeight="150.0" style="-fx-background-color: #3C0048;">
+                <StackPane prefHeight="150.0" styleClass="header">
                     <children>
                         <Label text="View Transactions" textFill="WHITE">
                             <font>
@@ -52,17 +56,11 @@
                         </Label>
                     </children>
                 </StackPane>
-                <ToolBar prefHeight="100.0">
-                    <items>
-                        <Button mnemonicParsing="false" text="View Transactions" />
-                        <Separator prefHeight="59.0" prefWidth="50.0" />
-                        <Button mnemonicParsing="false" text="Validate Transactions" />
-                        <Separator prefWidth="50.0" />
-                        <Button mnemonicParsing="false" text="Calculate Profit" />
-                        <Separator prefWidth="50.0" />
-                        <Button mnemonicParsing="false" text="Calculate Tax" />
-                    </items>
-                </ToolBar>
+            <AnchorPane prefWidth="1280.0">
+               <children>
+                  <Label fx:id="fileNameLabelViewTransactions" layoutY="6.0" prefHeight="34.0" prefWidth="670.0" />
+               </children>
+            </AnchorPane>
             </children>
         </VBox>
     </top>
