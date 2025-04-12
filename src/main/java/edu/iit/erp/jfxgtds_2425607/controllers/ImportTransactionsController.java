@@ -1,5 +1,9 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
+import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
+import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.service.FileImportManager;
+import edu.iit.erp.jfxgtds_2425607.utils.AppExceptions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImportTransactionsController {
 
@@ -40,10 +46,6 @@ public class ImportTransactionsController {
         this.filePathForCSV = filePathForCSV;
     }
 
-    public void setFilePathInput(TextField filePathInput) {
-        this.filePathInput = filePathInput;
-    }
-
     @FXML
     void onBrowseButtonClick(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -52,7 +54,6 @@ public class ImportTransactionsController {
         FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
         fileChooser.getExtensionFilters().add(csvFilter);
 
-        // Get the Stage from the ActionEvent
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         File selectedFile = fileChooser.showOpenDialog(stage);
@@ -60,36 +61,25 @@ public class ImportTransactionsController {
         if (selectedFile != null) {
             String filePath = selectedFile.getAbsolutePath();
             filePathInput.setText(filePath);
-
-        } else {
-            System.out.println("No File Selected");
+            filePathForCSV = filePath;
         }
     }
 
     @FXML
     void onImportButtonClick(ActionEvent event) {
+        FileImportManager fileImportManager = new FileImportManager();
         String filePath = filePathInput.getText();
-
-        if (filePath.isEmpty()) {
-            statusMessageLabel.setText("File path is empty. Please enter the file path for .csv file");
-            return;
+        try {
+            List<Transaction> transactions = fileImportManager.getCSVDatatoArray(filePath);
+            statusMessageLabel.setText("File Imported Successfully");
+            File file = new File(filePathForCSV);
+            fileNameLabel.setText(file.getName());
         }
-
-        File file = new File(filePath);
-
-        if (!filePath.endsWith(".csv")) {
-            statusMessageLabel.setText("Invalid format. Please enter the file path for .csv file");
-        } else {
-
-            if (file.exists() && file.isFile()) {
-                statusMessageLabel.setText("File Successfully Imported");
-                String fileName = file.getName();
-                fileNameLabel.setText("Name : " + fileName);
-
-            } else {
-                statusMessageLabel.setText("File does not exists! Please try again.");
-                fileNameLabel.setText("Name : ");
-            }
+        catch (AppExceptions.FileNotFoundErrorException e) {
+            statusMessageLabel.setText("File not found. Please verify the file path.");
+        }
+        catch (AppExceptions.FileFormatErrorException e) {
+            statusMessageLabel.setText("The file format appears to be incorrect. \nKindly select a valid CSV file that matches the required format.");
         }
     }
 
@@ -97,28 +87,7 @@ public class ImportTransactionsController {
     void onViewTransactionsButtonClick(ActionEvent event) {
         if (statusMessageLabel.getText().equals("File Successfully Imported")) {
             viewTransactionsErrorLabel.setText("");
-
-            filePathForCSV = filePathInput.getText();
-            setFilePathForCSV(filePathForCSV);
-            System.out.println("File path for csv : " + getFilePathForCSV());
-
-            // Redirect to View Transactions
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view-transactions.fxml"));
-                Parent root = loader.load();
-
-                ViewTransactionsController controller = loader.getController();
-                controller.setImportedFilePath(getFilePathForCSV());
-
-                root.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-
-            } catch (IOException e) {
-                System.out.println(e);
-            }
+            ScreenLoader.loadViewTransactions();
         } else {
             viewTransactionsErrorLabel.setText("Please import a file to continue");
         }
@@ -126,19 +95,6 @@ public class ImportTransactionsController {
 
     @FXML
     void onHomeButtonClick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/home-page.fxml"));
-            Parent root = loader.load();
-
-            root.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-        } catch (IOException e) {
-            System.out.println(e);
-
-        }
+        ScreenLoader.loadHomePage();
     }
 }

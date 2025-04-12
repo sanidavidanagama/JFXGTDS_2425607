@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>edu.iit.erp.jfxgtds_2425607/edu.iit.erp.jfxgtds_2425607.MainApp
+                            <mainClass>edu.iit.erp.jfxgtds_2425607/edu.iit.erp.jfxgtds_2425607.app.MainApp
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

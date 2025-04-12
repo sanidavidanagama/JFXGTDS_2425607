@@ -1,6 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
-import edu.iit.erp.jfxgtds_2425607.models.Bill;
+import edu.iit.erp.jfxgtds_2425607.models.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,39 +25,39 @@ import java.util.ResourceBundle;
 public class ViewTransactionsController implements Initializable {
 
     @FXML
-    private TableView<Bill> billTable;
+    private TableView<Transaction> billTable;
 
     @FXML
-    private TableColumn<Bill, String> billNumberColumn;
+    private TableColumn<Transaction, String> billNumberColumn;
 
     @FXML
-    private TableColumn<Bill, String> itemCodeColumn;
+    private TableColumn<Transaction, String> itemCodeColumn;
 
     @FXML
-    private TableColumn<Bill, Double> internalPriceColumn;
+    private TableColumn<Transaction, Double> internalPriceColumn;
 
     @FXML
-    private TableColumn<Bill, Double> discountPriceColumn;
+    private TableColumn<Transaction, Double> discountPriceColumn;
 
     @FXML
-    private TableColumn<Bill, Double> salePriceColumn;
+    private TableColumn<Transaction, Double> salePriceColumn;
 
     @FXML
-    private TableColumn<Bill, Integer> quantityColumn;
+    private TableColumn<Transaction, Integer> quantityColumn;
 
     @FXML
-    private TableColumn<Bill, Double> lineTotalColumn;
+    private TableColumn<Transaction, Double> lineTotalColumn;
 
     @FXML
-    private TableColumn<Bill, Double> grandTotalColumn;
+    private TableColumn<Transaction, Double> grandTotalColumn;
 
     @FXML
-    private TableColumn<Bill, Integer> checksumColumn;
+    private TableColumn<Transaction, Integer> checksumColumn;
 
     @FXML
     private Label fileNameLabelViewTransactions;
 
-    private ObservableList<Bill> billData = FXCollections.observableArrayList();
+    private ObservableList<Transaction> transactionData = FXCollections.observableArrayList();
 
 
     private String importedFilePath;
@@ -118,7 +118,7 @@ public class ViewTransactionsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         System.out.println("Controller initialized!");
-        // Bind columns to the Bill properties
+        // Bind columns to the Transaction properties
         billNumberColumn.setCellValueFactory(new PropertyValueFactory<>("billNumber"));
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         internalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("internalPrice"));
@@ -130,14 +130,14 @@ public class ViewTransactionsController implements Initializable {
         checksumColumn.setCellValueFactory(new PropertyValueFactory<>("checksum"));
 
         // Set the data to the table
-        billTable.setItems(billData);
+        billTable.setItems(transactionData);
         // Load initial data
 
         System.out.println("Table items: " + billTable.getItems().size());
     }
 
     private void loadCSVData(){
-        List<Bill> bills = new ArrayList<>();
+        List<Transaction> transactions = new ArrayList<>();
         String filePath = importedFilePath;
         System.out.println("filePath: " + filePath);
 
@@ -145,22 +145,22 @@ public class ViewTransactionsController implements Initializable {
         try (BufferedReader br = new BufferedReader(new FileReader(file));) {
             String line;
             while ((line = br.readLine()) != null) {
-                Bill bill = getBill(line);
-                bills.add(bill);
+                Transaction transaction = getBill(line);
+                transactions.add(transaction);
             }
 
-            billData.addAll(bills);
+            transactionData.addAll(transactions);
 
         } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }
     }
 
-    private static Bill getBill(String line) {
+    private static Transaction getBill(String line) {
         String[] data = line.split(",");
 
-        Bill bill = new Bill(
-                data[0],                        //Bill Number
+        Transaction transaction = new Transaction(
+                data[0],                        //Transaction Number
                 data[1],                        // Item code
                 Double.parseDouble(data[2]),    // Internal Price
                 Double.parseDouble(data[3]),    // Discount Price
@@ -170,13 +170,13 @@ public class ViewTransactionsController implements Initializable {
                 Double.parseDouble(data[7]),    // Grand Total
                 Integer.parseInt(data[8])       // Checksum
         );
-        return bill;
+        return transaction;
     }
 
-    // Method to add a new bill to the table
-    public void addBill(Bill bill) {
-        billData.add(bill);
-        System.out.println("Added bill: " + bill.getBillNumber());
+    // Method to add a new transaction to the table
+    public void addBill(Transaction transaction) {
+        transactionData.add(transaction);
+        System.out.println("Added transaction: " + transaction.getBillNumber());
     }
 
 }

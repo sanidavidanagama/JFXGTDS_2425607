@@ -2,11 +2,11 @@ module edu.iit.erp.jfxgtds_2425607 {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens edu.iit.erp.jfxgtds_2425607 to javafx.fxml;
+    opens edu.iit.erp.jfxgtds_2425607.app to javafx.fxml;
     opens edu.iit.erp.jfxgtds_2425607.controllers to javafx.fxml;
     opens edu.iit.erp.jfxgtds_2425607.models to javafx.base;
 
-    exports edu.iit.erp.jfxgtds_2425607;
+    exports edu.iit.erp.jfxgtds_2425607.app;
     exports edu.iit.erp.jfxgtds_2425607.controllers;
     exports edu.iit.erp.jfxgtds_2425607.models;
 }
