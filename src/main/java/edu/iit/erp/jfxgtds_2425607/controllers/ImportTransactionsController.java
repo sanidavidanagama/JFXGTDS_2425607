@@ -6,17 +6,13 @@ import edu.iit.erp.jfxgtds_2425607.service.FileImportManager;
 import edu.iit.erp.jfxgtds_2425607.utils.AppExceptions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +42,8 @@ public class ImportTransactionsController {
         this.filePathForCSV = filePathForCSV;
     }
 
+    private List<Transaction> transactions = new ArrayList<>();
+
     @FXML
     void onBrowseButtonClick(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -74,6 +72,7 @@ public class ImportTransactionsController {
             statusMessageLabel.setText("File Imported Successfully");
             File file = new File(filePathForCSV);
             fileNameLabel.setText(file.getName());
+            setTransactions(transactions);
         }
         catch (AppExceptions.FileNotFoundErrorException e) {
             statusMessageLabel.setText("File not found. Please verify the file path.");
@@ -85,9 +84,10 @@ public class ImportTransactionsController {
 
     @FXML
     void onViewTransactionsButtonClick(ActionEvent event) {
-        if (statusMessageLabel.getText().equals("File Successfully Imported")) {
+        if (!transactions.isEmpty()) {
             viewTransactionsErrorLabel.setText("");
-            ScreenLoader.loadViewTransactions();
+            File file = new File(filePathForCSV);
+            ScreenLoader.loadViewTransactions(transactions, file.getName());
         } else {
             viewTransactionsErrorLabel.setText("Please import a file to continue");
         }
@@ -96,5 +96,13 @@ public class ImportTransactionsController {
     @FXML
     void onHomeButtonClick(ActionEvent event) {
         ScreenLoader.loadHomePage();
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }
