@@ -232,15 +232,13 @@
     -fx-padding: 0;
 }
 
-.import-transactions-button,
-.validate-transactions-button  {
+.import-transactions-button {
     -fx-background-color: transparent;
     -fx-text-fill: #3729a8;
     -fx-font-size: 15px;
     -fx-cursor: hand;
 }
-.import-transactions-button:hover,
-.validate-transactions-button:hover {
+.import-transactions-button:hover {
     -fx-text-fill: #b057d9;
 }
 
@@ -250,3 +248,76 @@
     -fx-font-weight: bolder;
     -fx-text-fill: linear-gradient(to right, #b057d9, #3729a8);
 }
+
+.validate-transactions-button {
+    -fx-font-size: 18px;
+    -fx-background-color: #378bfd;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+}
+.validate-transactions-button:hover {
+    -fx-background-color: #3729a8;
+
+}
+
+/* Validate Transactions */
+.calculate-button {
+    -fx-font-size: 18px;
+    -fx-background-color: #378bfd;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+}
+
+.calculate-button:hover {
+    -fx-background-color: #3729a8;
+}
+
+.validate-info {
+    -fx-padding: 40px 0 40px 40px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+}
+
+#validTable, #invalidTable {
+    -fx-pref-height: 500px;
+}
+
+.section-title {
+    -fx-font-size: 28px;
+    -fx-padding: 0 0 0 40px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: linear-gradient(to right, #b057d9, #3729a8);
+}
+
+.breadcrumb {
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 14px;
+    -fx-text-fill: #7f8c8d;
+    -fx-padding: 10 0 0 0;
+}
+
+.action-button {
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: #b057d9;
+    -fx-border-width: 1px;
+    -fx-text-fill: #b057d9;
+    -fx-cursor: hand;
+}
+.action-button:hover {
+    -fx-background-color: #b057d9;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-width: 0;
+}
+
+
+
+
+

@@ -1,5 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.app;
 
+import edu.iit.erp.jfxgtds_2425607.controllers.ValidateTransactionsController;
 import edu.iit.erp.jfxgtds_2425607.controllers.ViewTransactionsController;
 import edu.iit.erp.jfxgtds_2425607.models.Transaction;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,8 @@ public class ScreenLoader {
             scene.getStylesheets().add(ScreenLoader.class.getResource("/styles.css").toExternalForm());
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle(title);
+            primaryStage.setTitle("JFXGTDS | " + title);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             System.err.println("Failed to load " + fxmlFile);
@@ -46,27 +48,31 @@ public class ScreenLoader {
         loadScene("view-transactions.fxml", "View Transactions");
     }
 
-    public static void loadViewTransactions(List<Transaction> transactionsList, String fileName) {
-        try {
-            FXMLLoader loader = new FXMLLoader(ScreenLoader.class.getResource("/view-transactions.fxml"));
-            Parent root = loader.load();
-
-            // Pass data to the controller
-            ViewTransactionsController controller = loader.getController();
-            controller.setTransactionList(transactionsList);
-
-            controller.setFileName(fileName);
-
-            Scene scene = new Scene(root, 1280, 720);
-            scene.getStylesheets().add(ScreenLoader.class.getResource("/styles.css").toExternalForm());
-
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("View Transactions");
-            primaryStage.show();
-        } catch (IOException e) {
-            System.err.println("Failed to load view-transactions.fxml");
-            e.printStackTrace();
-        }
+    public static void loadValidateTransactions() {
+        loadScene("validate-transactions.fxml", "Validate Transactions");
     }
 
+//    public static void loadValidateTransactions(List<Transaction> transactionsList, String fileName) {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(ScreenLoader.class.getResource("/validate-transactions.fxml"));
+//            Parent root = loader.load();
+//
+//            // Pass data to the controller
+//            ValidateTransactionsController controller = loader.getController();
+//            controller.setTransactionList(transactionsList);
+//
+//            controller.setFileName(fileName);
+//
+//            Scene scene = new Scene(root, 1280, 720);
+//            scene.getStylesheets().add(ScreenLoader.class.getResource("/styles.css").toExternalForm());
+//
+//            primaryStage.setScene(scene);
+//            primaryStage.setTitle("JFXGTDS | Validate Transactions");
+//            primaryStage.setResizable(false);
+//            primaryStage.show();
+//        } catch (IOException e) {
+//            System.err.println("Failed to load view-transactions.fxml");
+//            e.printStackTrace();
+//        }
+//    }
 }

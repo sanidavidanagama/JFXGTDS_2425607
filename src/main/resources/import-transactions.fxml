@@ -18,7 +18,7 @@
    <children>
       <StackPane prefHeight="150.0" styleClass="header">
          <children>
-            <Label alignment="CENTER" styleClass="heading-bar-label" text="Import Transactions" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" styleClass="heading-bar-label" text="IMPORT TRANSACTIONS" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font></Label>

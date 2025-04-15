@@ -4,12 +4,12 @@ public class CSVUtil {
 
     public static Boolean formatChecker(String line) {
         String[] arr = line.split(",");
-        if (arr.length != 9) {
+        if (arr.length != 6) {
             return false;
         }
         else {
-            // Checking whether the columns from 3 to 9 is numeric
-            for (int i = 2; i <= 8; i++) {
+            // Checking whether the columns from 2 to 6 is numeric
+            for (int i = 1; i <= 5; i++) {
                 if (!isNumeric(arr[i])) {
                     return false;
                 }

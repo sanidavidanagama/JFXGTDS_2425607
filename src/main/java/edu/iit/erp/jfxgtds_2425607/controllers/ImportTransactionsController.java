@@ -34,6 +34,16 @@ public class ImportTransactionsController {
 
     private String filePathForCSV;
 
+    private String fileNameForCSV;
+
+    public String getFileNameForCSV() {
+        return fileNameForCSV;
+    }
+
+    public void setFileNameForCSV(String fileNameForCSV) {
+        this.fileNameForCSV = fileNameForCSV;
+    }
+
     public String getFilePathForCSV() {
         return filePathForCSV;
     }
@@ -72,6 +82,7 @@ public class ImportTransactionsController {
             statusMessageLabel.setText("File Imported Successfully");
             File file = new File(filePathForCSV);
             fileNameLabel.setText(file.getName());
+            setFileNameForCSV(file.getName());
             setTransactions(transactions);
         }
         catch (AppExceptions.FileNotFoundErrorException e) {
@@ -86,8 +97,7 @@ public class ImportTransactionsController {
     void onViewTransactionsButtonClick(ActionEvent event) {
         if (!transactions.isEmpty()) {
             viewTransactionsErrorLabel.setText("");
-            File file = new File(filePathForCSV);
-            ScreenLoader.loadViewTransactions(transactions, file.getName());
+            ScreenLoader.loadViewTransactions();
         } else {
             viewTransactionsErrorLabel.setText("Please import a file to continue");
         }
