@@ -1,5 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
+import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
 import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
 import edu.iit.erp.jfxgtds_2425607.models.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
@@ -10,6 +11,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,9 +20,6 @@ import javafx.scene.layout.Region;
 import java.util.List;
 
 public class ValidateTransactionsController {
-
-    @FXML
-    private Button calculateProfitButton;
 
     @FXML
     private TableColumn<InvalidTransaction, Void> delete;
@@ -85,12 +84,22 @@ public class ValidateTransactionsController {
     @FXML
     private Label validRecordsTableCaption;
 
+    @FXML
+    void onCalculateProfitButtonClick(ActionEvent event) {
+        if (manager.getTotalInvalid() == 0) {
+            ScreenLoader.loadCalculateProfit();
+        }
+        else {
+            System.out.println("Validate all invalid records");
+        }
+    }
+
     private final ValidateTransactionsManager manager = new ValidateTransactionsManager();
 
     public void initialize() {
+        validate();
         setupTableColumns();
         addActionButtonsToTable();
-        validate();
         setupValidationResults();
     }
 
@@ -134,7 +143,6 @@ public class ValidateTransactionsController {
                 editButton.getStyleClass().add("action-button");
                 editButton.setOnAction(event -> {
                     InvalidTransaction transaction = (InvalidTransaction) getTableView().getItems().get(getIndex());
-                    System.out.println(transaction.getTransaction().getItemCode());
                     openEditPopup(transaction);
                 });
             }
@@ -155,15 +163,15 @@ public class ValidateTransactionsController {
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                TransactionDataStore.getInstance().deleteTransaction(transaction.getTransaction());
-//                manager.deleteInvalidTransaction(transaction);
+                manager.deleteInvalidTransaction(transaction);
                 initialize();
             }
         });
     }
 
     private void openEditPopup(InvalidTransaction transaction) {
-        return;
+        ScreenLoader.openEditTransactionDialog(transaction);
+        initialize();
     }
 
     public void validate() {
@@ -197,25 +205,26 @@ public class ValidateTransactionsController {
 
 
     public void setupTableCaptions() {
-        if (manager.getTotalInvalid() == 0) {
-            invalidRecordsTableCaption.setVisible(false);
-        }
-        if (manager.getTotalValid() == 0) {
-            validRecordsTableCaption.setVisible(false);
-        }
-        if (manager.getTotalImported() == manager.getTotalValid() || manager.getTotalInvalid() == 0) {
-            validRecordsTableCaption.setVisible(true);
-            validRecordsTableCaption.setText("All Transactions are Valid and Verified");
-        }
-        if (manager.getTotalImported() == manager.getTotalInvalid()) {
-            invalidRecordsTableCaption.setVisible(true);
+        int totalValid = manager.getTotalValid();
+        int totalInvalid = manager.getTotalInvalid();
+        int totalImported = manager.getTotalImported();
+
+        boolean allValid = totalInvalid == 0;
+        boolean allInvalid = totalValid == 0;
+
+        validRecordsTableCaption.setVisible(!allInvalid);
+        invalidRecordsTableCaption.setVisible(!allValid);
+
+        if (allValid) {
+            validRecordsTableCaption.setText("All Transactions are Valid and Verified!");
+        } else if (allInvalid) {
             invalidRecordsTableCaption.setText("Action Needed - All Transactions are Invalid!");
-        }
-        else {
-            invalidRecordsTableCaption.setText("Action Needed - " + manager.getTotalInvalid() + " Invalid Transactions Found!");
+        } else {
             validRecordsTableCaption.setText("Valid Transactions");
+            invalidRecordsTableCaption.setText("Action Needed - " + totalInvalid + " Invalid Transactions Found!");
         }
     }
+
 
     public void setupValidationResults() {
         totalImportedLabel.setText("Total Imported Records: " + manager.getTotalImported());

@@ -318,6 +318,49 @@
 }
 
 
+/* Edit Transactions */
+.popup-heading {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 25px;
+    -fx-font-weight: bolder;
+}
+
+.edit-transactions-action-buttons {
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: #b057d9;
+    -fx-border-width: 1px;
+    -fx-text-fill: #b057d9;
+    -fx-cursor: hand;
+}
+.edit-transactions-action-buttons:hover {
+    -fx-background-color: #b057d9;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-width: 0;
+}
+
+.popup-labels {
+    -fx-font-weight: bolder;
+}
+
+.popup-inputs {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30;
+    -fx-border-color: linear-gradient(to right, #b057d9, #3729a8);
+    -fx-border-width: 1;
+    -fx-border-radius: 30;
+}
+
+.popup-error-labels {
+    -fx-font-size: 10px;
+    -fx-text-fill: #CC0202 ;
+}
+
+#reasonLabel {
+    -fx-text-fill: #CC0202 ;
+}
+
 
 
 

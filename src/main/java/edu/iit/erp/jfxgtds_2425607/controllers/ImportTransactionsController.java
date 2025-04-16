@@ -54,6 +54,7 @@ public class ImportTransactionsController {
 
     private List<Transaction> transactions = new ArrayList<>();
 
+
     @FXML
     void onBrowseButtonClick(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();

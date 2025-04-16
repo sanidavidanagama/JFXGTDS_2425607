@@ -59,9 +59,7 @@ public class ViewTransactionsController {
     public void initialize() {
         List<Transaction> transactions = TransactionDataStore.getInstance().getTransactionList();
         transactionTable.setItems(FXCollections.observableArrayList(transactions));
-
         fileNameLabelViewTransactions.setText(getFileName());
-
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         internalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("internalPrice"));
         discountColumn.setCellValueFactory(new PropertyValueFactory<>("discountPrice"));

@@ -1,15 +1,14 @@
 package edu.iit.erp.jfxgtds_2425607.app;
 
-import edu.iit.erp.jfxgtds_2425607.controllers.ValidateTransactionsController;
-import edu.iit.erp.jfxgtds_2425607.controllers.ViewTransactionsController;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.controllers.EditTransactionsController;
+import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ScreenLoader {
 
@@ -52,27 +51,31 @@ public class ScreenLoader {
         loadScene("validate-transactions.fxml", "Validate Transactions");
     }
 
-//    public static void loadValidateTransactions(List<Transaction> transactionsList, String fileName) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(ScreenLoader.class.getResource("/validate-transactions.fxml"));
-//            Parent root = loader.load();
-//
-//            // Pass data to the controller
-//            ValidateTransactionsController controller = loader.getController();
-//            controller.setTransactionList(transactionsList);
-//
-//            controller.setFileName(fileName);
-//
-//            Scene scene = new Scene(root, 1280, 720);
-//            scene.getStylesheets().add(ScreenLoader.class.getResource("/styles.css").toExternalForm());
-//
-//            primaryStage.setScene(scene);
-//            primaryStage.setTitle("JFXGTDS | Validate Transactions");
-//            primaryStage.setResizable(false);
-//            primaryStage.show();
-//        } catch (IOException e) {
-//            System.err.println("Failed to load view-transactions.fxml");
-//            e.printStackTrace();
-//        }
-//    }
+    public static void openEditTransactionDialog(InvalidTransaction transaction) {
+        try {
+            FXMLLoader loader = new FXMLLoader(ScreenLoader.class.getResource("/edit-transactions.fxml"));
+            Parent root = loader.load();
+
+            EditTransactionsController controller = loader.getController();
+            controller.setInvalidTransaction(transaction);
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Edit Transaction");
+            Scene scene = new Scene(root, 600, 450);
+            scene.getStylesheets().add(ScreenLoader.class.getResource("/styles.css").toExternalForm());
+            popupStage.setScene(scene);
+            popupStage.setResizable(false);
+            popupStage.showAndWait();
+        }
+        catch (IOException e) {
+            System.err.println("Failed to load edit-transactions.fxml");
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadCalculateProfit() {
+        loadScene("calculate-profit.fxml", "Calculate Profit");
+    }
+
 }

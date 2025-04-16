@@ -34,11 +34,10 @@ public class FileImportManager {
                 }
                 Transaction transaction = getTransaction(line);
                 transactionsList.add(transaction);
-                TransactionDataStore.getInstance().setTransactionList(transactionsList);
-
-                File file = new File(fileName);
-                TransactionDataStore.getInstance().setFileName(file.getName());
             }
+            TransactionDataStore.getInstance().setTransactionList(transactionsList);
+            File file = new File(fileName);
+            TransactionDataStore.getInstance().setFileName(file.getName());
         } catch (IOException e) {
             System.out.println(e);
         }

@@ -99,7 +99,7 @@ public class ValidateTransactionsManager {
                 validTransactionsList.add(transaction);
                 totalValid++;
             } else {
-                String combinedReason = String.join("\n ", reasons);
+                String combinedReason = String.join(" | ", reasons);
                 invalidTransactionList.add(new InvalidTransaction(transaction, combinedReason));
                 totalInvalid++;
             }
@@ -129,12 +129,6 @@ public class ValidateTransactionsManager {
     }
 
     public void deleteInvalidTransaction(InvalidTransaction transaction) {
-        invalidTransactionList.remove(transaction);
-        Transaction trasactionToDelete = transaction.getTransaction();
-        TransactionDataStore.getInstance().deleteTransaction(trasactionToDelete);
-        totalInvalid--;
+        TransactionDataStore.getInstance().deleteTransaction(transaction.getTransaction());
     }
-
-
-
 }

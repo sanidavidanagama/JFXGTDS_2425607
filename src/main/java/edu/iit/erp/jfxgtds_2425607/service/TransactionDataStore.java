@@ -5,6 +5,8 @@ import edu.iit.erp.jfxgtds_2425607.models.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Design Pattern - Singleton Design Pattern */
+
 public class TransactionDataStore {
     private static TransactionDataStore instance;
 
@@ -63,6 +65,8 @@ public class TransactionDataStore {
     public int findTransactionIndex(Transaction transaction) {
         return transactionList.indexOf(transaction);
     }
+
+
 
 
 

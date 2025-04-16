@@ -13,4 +13,15 @@ public class AppExceptions {
             super(message);
         }
     }
+    public static class InvalidDoubleException extends Exception {
+        public InvalidDoubleException(String message) {
+            super(message);
+        }
+    }
+
+    public static class InvalidIntegerException extends Exception {
+        public InvalidIntegerException(String message) {
+            super(message);
+        }
+    }
 }

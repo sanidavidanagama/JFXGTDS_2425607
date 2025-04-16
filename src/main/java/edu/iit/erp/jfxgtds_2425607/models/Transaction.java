@@ -7,6 +7,7 @@ public class Transaction {
     private double salePrice;
     private int quantity;
     private int checksum;
+    private double profit;
 
     // Constructor
     public Transaction(String itemCode, double internalPrice, double discountPrice, double salePrice, int quantity, int checksum) {
@@ -16,6 +17,7 @@ public class Transaction {
         this.salePrice = salePrice;
         this.quantity = quantity;
         this.checksum = checksum;
+        this.profit = ((internalPrice * quantity) - (salePrice * quantity - discountPrice));
     }
 
     // Getters
@@ -42,6 +44,11 @@ public class Transaction {
     public int getChecksum() {
         return checksum;
     }
+
+    public double getProfit() {
+        return profit;
+    }
+
 
     // Setters
 
@@ -70,9 +77,7 @@ public class Transaction {
         this.checksum = checksum;
     }
 
-    // Calculating profit
-    public Integer calculateProfit(Transaction transaction) {
-        return (int) ((transaction.getInternalPrice() * transaction.getQuantity()) - (transaction.getSalePrice() * transaction.getQuantity() - transaction.getDiscountPrice()));
-
+    public void setProfit(double profit) {
+        this.profit = profit;
     }
 }
