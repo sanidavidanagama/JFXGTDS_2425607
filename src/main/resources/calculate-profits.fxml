@@ -24,7 +24,12 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefWidth="100.0">
                      <children>
-                        <TableView fx:id="profitTable" prefHeight="500.0" prefWidth="1280.0">
+                        <VBox styleClass="calculate-profit-records">
+                           <children>
+                              <Label fx:id="validatedTransactionsCountLabel" />
+                           </children>
+                        </VBox>
+                        <TableView fx:id="profitTable" prefHeight="400.0" prefWidth="1280.0">
                            <columns>
                               <TableColumn fx:id="itemCode" prefWidth="75.0" text="Item Code" />
                               <TableColumn fx:id="internalPrice" prefWidth="75.0" text="Internal Price" />
@@ -38,19 +43,20 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteZeroProfitButtonClick" text="Delete Zero Profit Transactions" textAlignment="CENTER" />
+                        <Label fx:id="deletedCountLabel" />
+                        <Button fx:id="deleteZeroProfitsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteZeroProfitButtonClick" styleClass="deleteZeroProfitsButton" text="Delete Zero Profit Transactions" textAlignment="CENTER" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox styleClass="profit-info">
                      <children>
                         <Label fx:id="totalProfitsLabel" text="Total Profits : " />
                         <Label fx:id="totalLossLabel" text="Total Loss : " />
                         <Label fx:id="finalProfitsLabel" text="Final Profits : " />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onCalculateTaxButtonClick" text="Calculate Tax" />
+                        <Button mnemonicParsing="false" onAction="#onCalculateTaxButtonClick" styleClass="calculate-tax-button" text="Calculate Tax" />
                      </children>
                   </VBox>
                </children>

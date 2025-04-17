@@ -46,8 +46,6 @@
 }
 
 
-
-
  /*Import Transactions Styling*/
 .heading-bar-label {
     -fx-font-size: 50px;
@@ -360,6 +358,118 @@
 #reasonLabel {
     -fx-text-fill: #CC0202 ;
 }
+
+/* Calculate Profit */
+
+.profit-info {
+    -fx-padding: 40px 0 40px 40px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+}
+
+.calculate-tax-button {
+    -fx-font-size: 20px;
+    -fx-background-color: #378bfd;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+
+}
+
+.calculate-tax-button:hover {
+    -fx-background-color: #3729a8;
+}
+
+.deleteZeroProfitsButton {
+    -fx-font-size: 15px;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: #b057d9;
+    -fx-border-width: 1px;
+    -fx-text-fill: #b057d9;
+    -fx-cursor: hand;
+}
+.deleteZeroProfitsButton:hover {
+    -fx-background-color: #b057d9;
+    -fx-text-fill: #FFFFFF;
+}
+
+#deletedCountLabel {
+    -fx-padding: 0 0 50px 0;
+    -fx-font-weight: bolder;
+    -fx-text-fill: #b057d9;
+    -fx-font-size: 14px;
+}
+
+#validatedTransactionsCountLabel {
+    -fx-padding: 30px 30px 0 30px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: linear-gradient(to right, #b057d9, #3729a8);
+}
+
+/* Calculate Tax */
+.calculate-tax-input-container {
+    -fx-spacing: 30px;
+    -fx-padding: 30px;
+}
+
+.calculate-tax-row-container {
+    -fx-spacing: 5px;
+    -fx-padding: 5px;
+}
+
+.calculate-tax-row-heading {
+    -fx-background-color: #b057d9;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+}
+.calculate-tax-row-data {
+    -fx-background-color: #b057d9;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+}
+
+.final-tax-row {
+    -fx-background-color: #3729a8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+}
+
+#taxRateInput {
+    -fx-background-color: transparent;
+    -fx-background-radius: 30;
+    -fx-border-color: linear-gradient(to right, #b057d9, #3729a8);
+    -fx-border-width: 1;
+    -fx-border-radius: 30;
+    -fx-font-size: 20px;
+}
+
+.calculate-tax-on-input-button {
+    -fx-font-size: 20px;
+    -fx-background-color: #3729a8;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+}
+
+.calculate-tax-on-input-button:hover {
+    -fx-background-color: #b057d9;
+}
+
+.tax-rate-label {
+    -fx-font-size: 20px;
+
+}
+
+
 
 
 

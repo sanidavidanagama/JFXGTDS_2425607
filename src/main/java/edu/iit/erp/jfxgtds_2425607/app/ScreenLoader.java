@@ -75,7 +75,11 @@ public class ScreenLoader {
     }
 
     public static void loadCalculateProfit() {
-        loadScene("calculate-profit.fxml", "Calculate Profit");
+        loadScene("calculate-profits.fxml", "Calculate Profit");
+    }
+
+    public static void loadCalculateTax() {
+        loadScene("calculate-tax.fxml", "Calculate Tax");
     }
 
 }

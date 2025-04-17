@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.iit.erp.jfxgtds_2425607.controllers.CalculateTaxController">
+   <top>
+      <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="heading-bar-label" text="Calculate Tax" />
+         </children>
+      </StackPane>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-input-container">
+               <children>
+                  <Label styleClass="tax-rate-label" text="Tax Rate  : " />
+                  <TextField fx:id="taxRateInput" />
+                  <Button mnemonicParsing="false" onAction="#onCalculateButtonClick" styleClass="calculate-tax-on-input-button" text="Calculate" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="1280.0">
+               <children>
+                  <Label fx:id="taxRateErrorLabel" alignment="CENTER" contentDisplay="CENTER" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Total Profit" textAlignment="CENTER" />
+                        <Label fx:id="totalProfitLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Total Loss" textAlignment="CENTER" />
+                        <Label fx:id="totalLossLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Profit or Loss" textAlignment="CENTER" />
+                        <Label fx:id="profitOrLossLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" text="Final Tax" textAlignment="CENTER" />
+                        <Label fx:id="finalTaxLabel" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

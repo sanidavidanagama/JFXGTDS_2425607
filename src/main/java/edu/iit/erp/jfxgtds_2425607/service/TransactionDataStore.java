@@ -11,7 +11,15 @@ public class TransactionDataStore {
     private static TransactionDataStore instance;
 
     private List<Transaction> transactionList = new ArrayList<>();
+
     private String fileName;
+
+    private Double totalProfits;
+
+    private Double totalLoss;
+
+    private Double profitOrLoss;
+
 
     private TransactionDataStore() {}
 
@@ -42,6 +50,30 @@ public class TransactionDataStore {
         this.fileName = fileName;
     }
 
+    public Double getTotalProfits() {
+        return totalProfits;
+    }
+
+    public void setTotalProfits(Double totalProfits) {
+        this.totalProfits = totalProfits;
+    }
+
+    public Double getTotalLoss() {
+        return totalLoss;
+    }
+
+    public void setTotalLoss(Double totalLoss) {
+        this.totalLoss = totalLoss;
+    }
+
+    public Double getProfitOrLoss() {
+        return profitOrLoss;
+    }
+
+    public void setProfitOrLoss(Double profitOrLoss) {
+        this.profitOrLoss = profitOrLoss;
+    }
+
     public boolean deleteTransactionByIndex(int index) {
         if (index >= 0 && index < transactionList.size()) {
             transactionList.remove(index);
@@ -54,17 +86,18 @@ public class TransactionDataStore {
         transactionList.remove(transaction);
     }
 
-    public boolean updateTransaction(int index, Transaction newTransaction) {
+    public void updateTransaction(int index, Transaction newTransaction) {
         if (index >= 0 && index < transactionList.size()) {
             transactionList.set(index, newTransaction);
-            return true;
         }
-        return false;
     }
 
     public int findTransactionIndex(Transaction transaction) {
         return transactionList.indexOf(transaction);
     }
+
+
+
 
 
 
