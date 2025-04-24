@@ -131,7 +131,7 @@ public class ValidateTransactionsController {
                 });
             }
             @Override
-            protected void updateItem(Void item, boolean empty) {
+            public void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
                 setGraphic(empty ? null : deleteButton);
             }
@@ -147,7 +147,7 @@ public class ValidateTransactionsController {
                 });
             }
             @Override
-            protected void updateItem(Void item, boolean empty) {
+            public void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
                 setGraphic(empty ? null : editButton);
             }

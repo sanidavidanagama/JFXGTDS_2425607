@@ -8,11 +8,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.iit.erp.jfxgtds_2425607.controllers.ValidateTransactionsController">
 
-   <center>
+         <center>
       <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS">
          <content>
             <VBox alignment="CENTER" spacing="20.0">
@@ -25,7 +24,7 @@
                      </children>
                   </VBox>
 
-                  <VBox spacing="10.0">
+                        <VBox spacing="10.0">
                      <Label fx:id="invalidRecordsTableCaption" styleClass="section-title" text="Invalid Records" />
                         <TableView fx:id="invalidTable" managed="false" visible="false" VBox.vgrow="ALWAYS">
                            <columns>
@@ -44,7 +43,7 @@
                         </TableView>
                   </VBox>
 
-                  <VBox spacing="10.0">
+                        <VBox spacing="10.0">
                      <Label fx:id="validRecordsTableCaption" styleClass="section-title" text="Valid Records" />
                         <TableView fx:id="validTable" managed="false" visible="false" VBox.vgrow="ALWAYS">
                            <columns>
@@ -61,10 +60,9 @@
                         </TableView>
                   </VBox>
 
-                  <VBox alignment="CENTER" spacing="10.0">
+                        <VBox alignment="CENTER" prefHeight="150.0" spacing="10.0">
                      <children>
-                        <Button onAction="#onCalculateProfitButtonClick" styleClass="calculate-button" text="Calculate Profit" />
-                        <Label contentDisplay="TOP" prefHeight="18.0" prefWidth="713.0" styleClass="breadcrumb" text="Home &gt; Import Transactions &gt; View Transactions &gt; Validate Transactions" />
+                        <Button onAction="#onCalculateProfitButtonClick" styleClass="next-page-button" text="Calculate Profit" />
                      </children>
                   </VBox>
                </children>
@@ -73,13 +71,9 @@
       </ScrollPane>
    </center>
    <top>
-      <StackPane prefHeight="150.0" styleClass="header">
+      <StackPane prefHeight="150.0" styleClass="header" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="heading-bar-label" text="VALIDATE TRANSACTIONS" textFill="WHITE">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
+            <Label styleClass="header-heading" text="Validate Transactions" />
          </children>
       </StackPane>
    </top>

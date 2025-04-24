@@ -81,5 +81,4 @@ public class ScreenLoader {
     public static void loadCalculateTax() {
         loadScene("calculate-tax.fxml", "Calculate Tax");
     }
-
 }

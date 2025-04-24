@@ -4,6 +4,7 @@ import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
 import edu.iit.erp.jfxgtds_2425607.models.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.FileImportManager;
 import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
+import edu.iit.erp.jfxgtds_2425607.service.ViewTransactionsManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewTransactionsController {
     @FXML
@@ -40,42 +39,20 @@ public class ViewTransactionsController {
     @FXML
     private Label fileNameLabelViewTransactions;
 
-    private String fileName;
 
-    public String getFileName() {
-        return TransactionDataStore.getInstance().getFileName();
-    }
-
-    private List<Transaction> transactions = new ArrayList<>();
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
+    private final ViewTransactionsManager manager = new ViewTransactionsManager();
 
     public void initialize() {
-        List<Transaction> transactions = TransactionDataStore.getInstance().getTransactionList();
-        transactionTable.setItems(FXCollections.observableArrayList(transactions));
-        fileNameLabelViewTransactions.setText(getFileName());
+        manager.loadData();
+        transactionTable.setItems(FXCollections.observableArrayList(manager.getTransactionList()));
+        fileNameLabelViewTransactions.setText(manager.getFileName());
+
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         internalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("internalPrice"));
         discountColumn.setCellValueFactory(new PropertyValueFactory<>("discountPrice"));
         salePriceColumn.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         checksumColumn.setCellValueFactory(new PropertyValueFactory<>("checksum"));
-    }
-
-    @FXML
-    void onHomeButtonClick(ActionEvent event) {
-        ScreenLoader.loadHomePage();
-    }
-
-    @FXML
-    void onImportTransactionsButtonClick(ActionEvent event) {
-        ScreenLoader.loadImportTransactions();
     }
 
     @FXML

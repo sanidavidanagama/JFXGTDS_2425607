@@ -14,15 +14,15 @@
          </children>
       </StackPane>
       <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="155.0" prefHeight="18.0" prefWidth="107.0" styleClass="popup-labels" text="Item Code : " />
-      <TextField fx:id="itemCodeInput" layoutX="194.0" layoutY="151.0" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
+      <TextField fx:id="itemCodeInput" layoutX="194.0" layoutY="151.0" onKeyPressed="#onEnterKeyPressed" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
       <Label alignment="CENTER_RIGHT" layoutX="87.0" layoutY="203.0" prefHeight="18.0" prefWidth="107.0" styleClass="popup-labels" text="Internal Price : " />
-      <TextField fx:id="internalPriceInput" layoutX="194.0" layoutY="199.0" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
+      <TextField fx:id="internalPriceInput" layoutX="194.0" layoutY="199.0" onKeyPressed="#onEnterKeyPressed" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
       <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="251.0" prefHeight="18.0" prefWidth="107.0" styleClass="popup-labels" text="Discount Price : " />
-      <TextField fx:id="discountPriceInput" layoutX="194.0" layoutY="247.0" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
+      <TextField fx:id="discountPriceInput" layoutX="194.0" layoutY="247.0" onKeyPressed="#onEnterKeyPressed" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
       <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="295.0" prefHeight="18.0" prefWidth="107.0" styleClass="popup-labels" text="Sale Price : " />
-      <TextField fx:id="salePriceInput" layoutX="194.0" layoutY="291.0" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
+      <TextField fx:id="salePriceInput" layoutX="194.0" layoutY="291.0" onKeyPressed="#onEnterKeyPressed" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
       <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="343.0" prefHeight="18.0" prefWidth="107.0" styleClass="popup-labels" text="Quantity : " />
-      <TextField fx:id="quantityInput" layoutX="194.0" layoutY="339.0" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
+      <TextField fx:id="quantityInput" layoutX="194.0" layoutY="339.0" onKeyPressed="#onEnterKeyPressed" prefHeight="26.0" prefWidth="320.0" styleClass="popup-inputs" />
       <Label fx:id="reasonLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="94.0" prefHeight="42.0" prefWidth="524.0" textAlignment="CENTER" />
       <Button layoutX="248.0" layoutY="410.0" mnemonicParsing="false" onAction="#onSaveButtonClick" styleClass="edit-transactions-action-buttons" text="Save" />
       <Button layoutX="300.0" layoutY="410.0" mnemonicParsing="false" onAction="#onCancelButtonClick" styleClass="edit-transactions-action-buttons" text="Cancel" />

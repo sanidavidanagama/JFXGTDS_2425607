@@ -4,78 +4,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.iit.erp.jfxgtds_2425607.controllers.ImportTransactionsController">
    <children>
       <StackPane prefHeight="150.0" styleClass="header">
          <children>
-            <Label alignment="CENTER" styleClass="heading-bar-label" text="IMPORT TRANSACTIONS" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="32.0" />
-               </font></Label>
+            <Label styleClass="header-heading" text="Import Transactions" />
          </children>
       </StackPane>
-      <StackPane VBox.vgrow="NEVER">
+      <VBox alignment="CENTER" prefHeight="570.0">
          <children>
-            <HBox prefWidth="1280.0">
+            <HBox alignment="CENTER" prefHeight="420.0" styleClass="import-container">
                <children>
-                  <AnchorPane prefHeight="570.0" prefWidth="390.0">
+                  <VBox alignment="CENTER" prefHeight="470.0" prefWidth="250.0">
                      <children>
-                        <Pane fx:id="browseFilesCover" layoutX="45.0" layoutY="99.0" prefHeight="350.0" prefWidth="300.0">
+                        <VBox alignment="CENTER" prefHeight="300.0" prefWidth="198.0" styleClass="border-box">
                            <children>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/upload-file.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutX="70.0" layoutY="202.0" mnemonicParsing="false" onAction="#onBrowseButtonClick" prefHeight="50.0" prefWidth="160.0" styleClass="browse-button" text="Browse Files" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onBrowseButtonClick" styleClass="browse-button" text="Browse Files" />
                            </children>
-                        </Pane>
-                        <ToolBar layoutY="470.0" prefHeight="100.0" prefWidth="390.0">
-                           <items>
-                              <Button mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="26.0" prefWidth="217.0" styleClass="import-transactions-button" text="&lt; Home" />
-                           </items>
-                        </ToolBar>
+                        </VBox>
                      </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="570.0" prefWidth="90.0">
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0">
                      <children>
-                        <Separator layoutX="20.0" layoutY="89.0" orientation="VERTICAL" prefHeight="130.0" prefWidth="50.0" styleClass="or-seperator" />
-                        <Separator layoutX="20.0" layoutY="310.0" orientation="VERTICAL" prefHeight="130.0" prefWidth="50.0" styleClass="or-seperator" />
-                        <Label fx:id="orSeperatorText" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="246.0" text="OR" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <Label alignment="CENTER" styleClass="or-label" text="OR" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
                      </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="570.0" prefWidth="798.0">
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="250.0">
                      <children>
-                        <TextField fx:id="filePathInput" layoutX="38.0" layoutY="175.0" prefHeight="40.0" prefWidth="709.0" styleClass="file-path-input" />
-                        <Label fx:id="filePathLabel" layoutX="38.0" layoutY="132.0" text="File Path">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="statusMessageLabel" layoutX="37.0" layoutY="232.0" prefWidth="710.0" text="Please import a file with .csv format." />
-                        <Label fx:id="fileNameLabel" layoutX="37.0" layoutY="276.0" prefHeight="18.0" prefWidth="710.0" />
-                        <Button layoutX="38.0" layoutY="477.0" mnemonicParsing="false" onAction="#onViewTransactionsButtonClick" prefHeight="50.0" prefWidth="270.0" styleClass="view-transactions-button" text="View Transactions" />
-                        <Label fx:id="viewTransactionsErrorLabel" layoutX="38.0" layoutY="438.0" prefHeight="38.0" prefWidth="530.0" />
-                        <Button layoutX="37.0" layoutY="354.0" mnemonicParsing="false" onAction="#onImportButtonClick" prefHeight="50.0" prefWidth="160.0" styleClass="import-button" text="Import" />
+                        <Label prefWidth="400.0" styleClass="file-name-label" text="File Name" />
+                        <TextField fx:id="filePathInput" prefHeight="26.0" prefWidth="600.0" styleClass="file-path-input" />
+                        <Label fx:id="statusMessageLabel" text="Please import a file with .csv format" wrapText="true" />
+                        <Label fx:id="fileNameLabel" />
+                        <Button mnemonicParsing="false" onAction="#onImportButtonClick" styleClass="import-button" text="Import Transactions" />
                      </children>
-                  </AnchorPane>
+                  </VBox>
                </children>
             </HBox>
+            <VBox alignment="CENTER" prefHeight="150.0" styleClass="footer">
+               <children>
+                  <Label fx:id="viewTransactionsErrorLabel" />
+                  <Button mnemonicParsing="false" onAction="#onViewTransactionsButtonClick" styleClass="next-page-button" text="View Transactions" />
+               </children>
+            </VBox>
          </children>
-      </StackPane>
+      </VBox>
    </children>
 </VBox>

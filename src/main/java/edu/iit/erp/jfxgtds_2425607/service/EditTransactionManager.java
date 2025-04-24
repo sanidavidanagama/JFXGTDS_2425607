@@ -9,8 +9,6 @@ public class EditTransactionManager {
 
     private final Checksum checksum = new Checksum();
 
-
-
     public String validateItemCode(String itemCode) {
         if (containsSpecialCharacter(itemCode)) {
             return "Item code cannot contain special characters";
@@ -54,6 +52,8 @@ public class EditTransactionManager {
             }
         }
     }
+
+
 
     public Transaction getUpdateTransaction(String itemCode, Double internalPrice, Double discountPrice, Double salePrice, Integer quantity) {
         String editedRecord = String.format("%s%s%s%s%s", itemCode, internalPrice, discountPrice, salePrice, quantity);

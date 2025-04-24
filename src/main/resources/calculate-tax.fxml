@@ -12,7 +12,7 @@
    <top>
       <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="heading-bar-label" text="Calculate Tax" />
+            <Label styleClass="header-heading" text="Calculate Tax" />
          </children>
       </StackPane>
    </top>
@@ -23,6 +23,7 @@
                <children>
                   <Label styleClass="tax-rate-label" text="Tax Rate  : " />
                   <TextField fx:id="taxRateInput" />
+                  <Label alignment="CENTER" styleClass="percentage-mark" text="\%" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#onCalculateButtonClick" styleClass="calculate-tax-on-input-button" text="Calculate" />
                </children>
             </HBox>
@@ -32,25 +33,25 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
                      <children>
                         <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Total Profit" textAlignment="CENTER" />
-                        <Label fx:id="totalProfitLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                        <Label fx:id="totalProfitLabel" alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" textAlignment="CENTER" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
                      <children>
                         <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Total Loss" textAlignment="CENTER" />
-                        <Label fx:id="totalLossLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                        <Label fx:id="totalLossLabel" alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" textAlignment="CENTER" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
                      <children>
                         <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-heading" text="Profit or Loss" textAlignment="CENTER" />
-                        <Label fx:id="profitOrLossLabel" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" />
+                        <Label fx:id="profitOrLossLabel" alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="calculate-tax-row-data" textAlignment="CENTER" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-row-container">
                      <children>
                         <Label alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" text="Final Tax" textAlignment="CENTER" />
-                        <Label fx:id="finalTaxLabel" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" />
+                        <Label fx:id="finalTaxLabel" alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" textAlignment="CENTER" />
                      </children>
                   </HBox>
                </children>

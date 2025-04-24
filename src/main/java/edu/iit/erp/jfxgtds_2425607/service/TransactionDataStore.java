@@ -12,14 +12,15 @@ public class TransactionDataStore {
 
     private List<Transaction> transactionList = new ArrayList<>();
 
-    private String fileName;
+    private String fileName = "";
 
-    private Double totalProfits;
+    private String absoluteFilePath = "";
 
-    private Double totalLoss;
+    private Double totalProfits = 0.0;
 
-    private Double profitOrLoss;
+    private Double totalLoss = 0.0;
 
+    private Double profitOrLoss = 0.0;
 
     private TransactionDataStore() {}
 
@@ -74,6 +75,14 @@ public class TransactionDataStore {
         this.profitOrLoss = profitOrLoss;
     }
 
+    public String getAbsoluteFilePath() {
+        return absoluteFilePath;
+    }
+
+    public void setAbsoluteFilePath(String absoluteFilePath) {
+        this.absoluteFilePath = absoluteFilePath;
+    }
+
     public boolean deleteTransactionByIndex(int index) {
         if (index >= 0 && index < transactionList.size()) {
             transactionList.remove(index);
@@ -96,11 +105,13 @@ public class TransactionDataStore {
         return transactionList.indexOf(transaction);
     }
 
-
-
-
-
-
-
+    public void reset() {
+        transactionList.clear();
+        fileName = "";
+        absoluteFilePath = "";
+        totalProfits = 0.0;
+        totalLoss = 0.0;
+        profitOrLoss = 0.0;
+    }
 
 }

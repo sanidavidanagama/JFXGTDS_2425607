@@ -6,10 +6,11 @@ import edu.iit.erp.jfxgtds_2425607.service.EditTransactionManager;
 import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import java.awt.event.KeyEvent;
 
 public class EditTransactionsController {
 
@@ -46,23 +47,8 @@ public class EditTransactionsController {
     @FXML
     private TextField salePriceInput;
 
-    @FXML
-    void onCancelButtonClick(ActionEvent event) {
-        Stage stage = (Stage) itemCodeInput.getScene().getWindow();
-        stage.close();
-    }
+    private final EditTransactionManager manager = new EditTransactionManager();
 
-    @FXML
-    void onSaveButtonClick(ActionEvent event) {
-        validateAllFields();
-        if (checkValidity()) {
-            Transaction editedTransaction = createNewTransaction();
-            int indexOfInvalidTransaction =  TransactionDataStore.getInstance().findTransactionIndex(invalidTransaction.getTransaction());
-            TransactionDataStore.getInstance().updateTransaction(indexOfInvalidTransaction, editedTransaction);
-            Stage stage = (Stage) itemCodeInput.getScene().getWindow();
-            stage.close();
-        }
-    }
 
     private InvalidTransaction invalidTransaction;
 
@@ -70,11 +56,10 @@ public class EditTransactionsController {
         return invalidTransaction;
     }
 
-    private final EditTransactionManager manager = new EditTransactionManager();
 
     public void setInvalidTransaction(InvalidTransaction invalidTransaction) {
         this.invalidTransaction = invalidTransaction;
-        displayPopup();
+        setupLabelsAndPlaceholders();
     }
 
     private void setupInputFieldsWithPastData() {
@@ -84,13 +69,6 @@ public class EditTransactionsController {
         discountPriceInput.setText(String.valueOf(transaction.getTransaction().getDiscountPrice()));
         salePriceInput.setText(String.valueOf(transaction.getTransaction().getSalePrice()));
         quantityInput.setText(String.valueOf(transaction.getTransaction().getQuantity()));
-    }
-
-    private void displayPopup() {
-        setupInputFieldsWithPastData();
-        setupPlaceHoldersWithPastData();
-        setUpReasonForError();
-
     }
 
     private void setUpReasonForError() {
@@ -104,7 +82,12 @@ public class EditTransactionsController {
         discountPriceInput.setPromptText(String.valueOf(transaction.getTransaction().getDiscountPrice()));
         salePriceInput.setPromptText(String.valueOf(transaction.getTransaction().getSalePrice()));
         quantityInput.setPromptText(String.valueOf(transaction.getTransaction().getQuantity()));
+    }
 
+    private void setupLabelsAndPlaceholders() {
+        setupInputFieldsWithPastData();
+        setupPlaceHoldersWithPastData();
+        setUpReasonForError();
     }
 
     private void validateAllFields() {
@@ -132,5 +115,42 @@ public class EditTransactionsController {
                 Double.valueOf(salePriceInput.getText()),
                 Integer.valueOf(quantityInput.getText())
         );
+    }
+
+    private void save() {
+        validateAllFields();
+        if (checkValidity()) {
+            Transaction editedTransaction = createNewTransaction();
+            int indexOfInvalidTransaction =  TransactionDataStore.getInstance().findTransactionIndex(invalidTransaction.getTransaction());
+            TransactionDataStore.getInstance().updateTransaction(indexOfInvalidTransaction, editedTransaction);
+            Stage stage = (Stage) itemCodeInput.getScene().getWindow();
+            stage.close();
+        }
+
+    }
+    private void close() {
+        Stage stage = (Stage) itemCodeInput.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void onCancelButtonClick(ActionEvent event) {
+        close();
+
+    }
+
+    @FXML
+    void onSaveButtonClick(ActionEvent event) {
+        save();
+    }
+
+    @FXML
+    void onEnterKeyPressed(javafx.scene.input.KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            save();
+        }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            close();
+        }
     }
 }

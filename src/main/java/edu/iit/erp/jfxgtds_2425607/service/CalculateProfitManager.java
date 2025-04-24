@@ -73,4 +73,6 @@ public class CalculateProfitManager {
         setProfitOrLoss(profitOrLoss);
         return profitOrLoss;
     }
+
+
 }

@@ -8,13 +8,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class CalculateProfitController {
 
@@ -69,13 +64,12 @@ public class CalculateProfitController {
         TransactionDataStore.getInstance().setTotalLoss(manager.getLoss());
         TransactionDataStore.getInstance().setProfitOrLoss(manager.getProfitOrLoss());
         ScreenLoader.loadCalculateTax();
-
     }
 
     @FXML
     void onDeleteZeroProfitButtonClick(ActionEvent event) {
         Integer deletedCount = manager.deleteZeroProfitTransactions();
-        deletedCountLabel.setText(deletedCount + " zero profit transactions have been deleted.");
+        deletedCountLabel.setText(deletedCount == 0 ? deletedCount  + " zero profit transactions have been deleted." : "No transactions have been deleted.");
         deleteZeroProfitsButton.setDisable(true);
         initialize();
     }
@@ -85,18 +79,14 @@ public class CalculateProfitController {
         List<Transaction> transactions = TransactionDataStore.getInstance().getTransactionList();
         profitTable.setItems(FXCollections.observableArrayList(transactions));
         setupProfitInfo();
-
     }
 
 
     public void setupProfitInfo() {
         validatedTransactionsCountLabel.setText("Total Validated Transactions : "+ String.valueOf(TransactionDataStore.getInstance().getTransactionList().size()));
-        String profits = Double.toString(manager.findProfits());
-        String losses = Double.toString(manager.findLosses());
-        String finalProfitOrLoss = Double.toString(manager.findTotalProfitOrLoss());
-        totalLossLabel.setText("Total Loss : " + losses);
-        totalProfitsLabel.setText("Total Profits : " + profits);
-        finalProfitsLabel.setText("Final PnL : " + finalProfitOrLoss);
+        totalLossLabel.setText("Total Loss : " + manager.findProfits());
+        totalProfitsLabel.setText("Total Profits : " + manager.findLosses());
+        finalProfitsLabel.setText("Final PnL : " + manager.findTotalProfitOrLoss());
     }
 
     private void setupTableColumns() {
@@ -111,7 +101,7 @@ public class CalculateProfitController {
         // Set custom CellFactory for profitOrLoss column
         profitOrLoss.setCellFactory(column -> new TableCell<Transaction, Double>() {
             @Override
-            protected void updateItem(Double profit, boolean empty) {
+            public void updateItem(Double profit, boolean empty) {
                 super.updateItem(profit, empty);
 
                 setText(null);

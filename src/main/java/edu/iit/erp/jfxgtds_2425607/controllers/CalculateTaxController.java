@@ -1,6 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
-import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
+import edu.iit.erp.jfxgtds_2425607.service.CalculateTaxManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -26,27 +26,23 @@ public class CalculateTaxController {
     @FXML
     private Label taxRateErrorLabel;
 
+    private final CalculateTaxManager manager = new CalculateTaxManager();
+
     @FXML
     void onCalculateButtonClick(ActionEvent event) {
-        // Final Tax = [For all line items SUM of (Profit – Loss) ] * tax rate%.
-        try {
-            Double taxRate = Double.parseDouble(taxRateInput.getText());
-            Double tax =  calculateTax(taxRate);
-            finalTaxLabel.setText(Double.toString(tax));
+        taxRateErrorLabel.setText(manager.validateTaxInput(taxRateInput.getText()));
+        if (taxRateErrorLabel.getText().isEmpty()) {
+            finalTaxLabel.setText(manager.getTax().toString());
         }
-        catch (NumberFormatException e) {
-            taxRateErrorLabel.setText("Invalid Tax Rate");
-        }
-    }
-
-    private Double calculateTax(Double taxRate) {
-        Double profitOrLoss = TransactionDataStore.getInstance().getProfitOrLoss();
-        return profitOrLoss * taxRate;
     }
 
     public void initialize() {
-
+        setupProfitInfo();
     }
 
-
+    public void setupProfitInfo() {
+        totalProfitLabel.setText(manager.getTotalProfit().toString());
+        totalLossLabel.setText(manager.getTotalLoss().toString());
+        profitOrLossLabel.setText(manager.getProfitOrLoss().toString());
+    }
 }
