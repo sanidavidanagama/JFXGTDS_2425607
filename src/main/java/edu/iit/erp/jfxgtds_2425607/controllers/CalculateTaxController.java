@@ -1,5 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
+import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
 import edu.iit.erp.jfxgtds_2425607.service.CalculateTaxManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,9 +32,18 @@ public class CalculateTaxController {
     @FXML
     void onCalculateButtonClick(ActionEvent event) {
         taxRateErrorLabel.setText(manager.validateTaxInput(taxRateInput.getText()));
-        if (taxRateErrorLabel.getText().isEmpty()) {
+        if (taxRateErrorLabel.getText().equals("")) {
             finalTaxLabel.setText(manager.getTax().toString());
         }
+        else {
+            finalTaxLabel.setText("");
+        }
+    }
+
+    @FXML
+    void onCompleteButtonClick(ActionEvent event) {
+        manager.resetAll();
+        ScreenLoader.loadHomePage();
     }
 
     public void initialize() {
@@ -45,4 +55,5 @@ public class CalculateTaxController {
         totalLossLabel.setText(manager.getTotalLoss().toString());
         profitOrLossLabel.setText(manager.getProfitOrLoss().toString());
     }
+
 }

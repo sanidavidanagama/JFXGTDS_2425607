@@ -84,8 +84,8 @@ public class CalculateProfitController {
 
     public void setupProfitInfo() {
         validatedTransactionsCountLabel.setText("Total Validated Transactions : "+ String.valueOf(TransactionDataStore.getInstance().getTransactionList().size()));
-        totalLossLabel.setText("Total Loss : " + manager.findProfits());
-        totalProfitsLabel.setText("Total Profits : " + manager.findLosses());
+        totalProfitsLabel.setText("Total Loss : " + manager.findProfits());
+        totalLossLabel.setText("Total Profits : " + manager.findLosses());
         finalProfitsLabel.setText("Final PnL : " + manager.findTotalProfitOrLoss());
     }
 

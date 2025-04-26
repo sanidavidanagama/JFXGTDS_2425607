@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -50,11 +51,18 @@ public class ImportTransactionsController {
         manager.setAbsoluteFilePath(filePathInput.getText());
         manager.validateImportedFile();
         statusMessageLabel.setText(manager.getStatusMessage());
-        fileNameLabel.setText(manager.getFileName());
+        if (statusMessageLabel.getText().toLowerCase().contains("file imported successfully.")) {
+            statusMessageLabel.setTextFill(Color.GREEN);
+            fileNameLabel.setText(manager.getFileName());
+        } else {
+            statusMessageLabel.setTextFill(Color.RED);
+            fileNameLabel.setText("");
+
+        }
+
     }
 
     public void initialize() {
-        manager.loadData();
         fileNameLabel.setText(manager.getFileName());
         statusMessageLabel.setText(manager.getStatusMessage());
         fileNameLabel.setText(manager.getFileName());

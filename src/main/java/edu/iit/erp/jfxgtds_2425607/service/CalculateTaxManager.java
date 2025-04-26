@@ -40,13 +40,24 @@ public class CalculateTaxManager {
                 return "Tax cannot be negative";
             }
             else {
-                taxDouble *= 0.01;
-                setTax(taxDouble);
+                calculateTax(taxDouble);
                 return "";
             }
         }
         catch (NumberFormatException e) {
             return "Invalid tax amount. Cannot contain text";
         }
+    }
+
+    private void calculateTax(Double tax) {
+        tax = Math.round(tax * profitOrLoss) / 100.0;
+        if (tax < 0) {
+            tax = 0.0;
+        }
+        setTax(tax);
+    }
+
+    public void resetAll() {
+        TransactionDataStore.getInstance().reset();
     }
 }

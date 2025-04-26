@@ -17,7 +17,7 @@ public class Transaction {
         this.salePrice = salePrice;
         this.quantity = quantity;
         this.checksum = checksum;
-        this.profit = ((internalPrice * quantity) - (salePrice * quantity - discountPrice));
+        this.profit = ((salePrice * quantity - discountPrice) - (internalPrice * quantity));
     }
 
     // Getters

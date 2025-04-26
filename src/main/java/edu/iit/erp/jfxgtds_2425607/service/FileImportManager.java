@@ -65,8 +65,9 @@ public class FileImportManager {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (!CSVUtil.formatChecker(line)) {
-                    setStatusMessage("Invalid file. Must have 6 columns and correct number formats.");
+                String status = CSVUtil.formatChecker(line);
+                if (!status.isEmpty()) {
+                    setStatusMessage(status);
                     return;
                 }
                 Transaction transaction = getTransaction(line);

@@ -23,7 +23,7 @@
                <children>
                   <Label styleClass="tax-rate-label" text="Tax Rate  : " />
                   <TextField fx:id="taxRateInput" />
-                  <Label alignment="CENTER" styleClass="percentage-mark" text="\%" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="29.0" prefWidth="30.0" styleClass="percentage-mark" text="\%" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#onCalculateButtonClick" styleClass="calculate-tax-on-input-button" text="Calculate" />
                </children>
             </HBox>
@@ -54,6 +54,11 @@
                         <Label fx:id="finalTaxLabel" alignment="CENTER" prefHeight="75.0" prefWidth="215.0" styleClass="final-tax-row" textAlignment="CENTER" />
                      </children>
                   </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="1280.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onCompleteButtonClick" styleClass="next-page-button" text="Complete" />
                </children>
             </VBox>
          </children>

@@ -10,13 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.iit.erp.jfxgtds_2425607.controllers.CalculateProfitController">
-   <top>
-      <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" BorderPane.alignment="CENTER">
-         <children>
-            <Label styleClass="header-heading" text="Calculate Profit" />
-         </children>
-      </StackPane>
-   </top>
    <center>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
@@ -64,4 +57,11 @@
          </content>
       </ScrollPane>
    </center>
+   <top>
+      <StackPane prefHeight="150.0" styleClass="header" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="header-heading" text="Calculate Profit" />
+         </children>
+      </StackPane>
+   </top>
 </BorderPane>
