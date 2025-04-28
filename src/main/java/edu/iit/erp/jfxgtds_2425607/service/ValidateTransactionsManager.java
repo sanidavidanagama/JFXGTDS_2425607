@@ -1,7 +1,8 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
-import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.InvalidTransaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 import edu.iit.erp.jfxgtds_2425607.utils.Checksum;
 
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ public class ValidateTransactionsManager {
     private Integer totalImported = 0;
     private Integer totalValid = 0;
     private Integer totalInvalid = 0;
-    private List<Transaction> originalTransactionsList = new ArrayList<>();
     private List<Transaction> validTransactionsList = new ArrayList<>();
     private List<InvalidTransaction> invalidTransactionList = new ArrayList<>();
 
@@ -57,14 +57,6 @@ public class ValidateTransactionsManager {
 
     public void setInvalidTransactionList(List<InvalidTransaction> invalidTransactionList) {
         this.invalidTransactionList = invalidTransactionList;
-    }
-
-    public List<Transaction> getOriginalTransactionsList() {
-        return originalTransactionsList;
-    }
-
-    public void setOriginalTransactionsList(List<Transaction> originalTransactionsList) {
-        this.originalTransactionsList = originalTransactionsList;
     }
 
     public void resetAll() {
@@ -121,7 +113,7 @@ public class ValidateTransactionsManager {
     }
 
     private boolean containsSpecialCharacter(String str) {
-        return !str.matches("[a-zA-Z0-9]*");
+        return !str.matches("[a-zA-Z0-9_]*");
     }
 
     private boolean validateItemPrice(Double internalPrice, Double discountPrice, Double salePrice) {

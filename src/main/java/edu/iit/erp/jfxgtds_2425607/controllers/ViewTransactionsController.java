@@ -1,10 +1,8 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
 import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
-import edu.iit.erp.jfxgtds_2425607.service.FileImportManager;
-import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
-import edu.iit.erp.jfxgtds_2425607.service.ViewTransactionsManager;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 
 public class ViewTransactionsController {
     @FXML
@@ -39,13 +36,11 @@ public class ViewTransactionsController {
     @FXML
     private Label fileNameLabelViewTransactions;
 
-
-    private final ViewTransactionsManager manager = new ViewTransactionsManager();
-
     public void initialize() {
-        manager.loadData();
-        transactionTable.setItems(FXCollections.observableArrayList(manager.getTransactionList()));
-        fileNameLabelViewTransactions.setText(manager.getFileName());
+        // Load data directly from TransactionDataStore
+        TransactionDataStore dataStore = TransactionDataStore.getInstance();
+        transactionTable.setItems(FXCollections.observableArrayList(dataStore.getTransactionList()));
+        fileNameLabelViewTransactions.setText(dataStore.getFileName());
 
         itemCodeColumn.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         internalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("internalPrice"));

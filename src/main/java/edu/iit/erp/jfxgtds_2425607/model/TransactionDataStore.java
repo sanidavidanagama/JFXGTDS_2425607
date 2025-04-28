@@ -1,6 +1,4 @@
-package edu.iit.erp.jfxgtds_2425607.service;
-
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+package edu.iit.erp.jfxgtds_2425607.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +11,6 @@ public class TransactionDataStore {
     private List<Transaction> transactionList = new ArrayList<>();
 
     private String fileName = "";
-
-    private String absoluteFilePath = "";
 
     private Double totalProfits = 0.0;
 
@@ -39,9 +35,6 @@ public class TransactionDataStore {
         this.transactionList = list;
     }
 
-    public void clearTransactions() {
-        transactionList.clear();
-    }
 
     public String getFileName() {
         return fileName;
@@ -75,13 +68,6 @@ public class TransactionDataStore {
         this.profitOrLoss = profitOrLoss;
     }
 
-    public String getAbsoluteFilePath() {
-        return absoluteFilePath;
-    }
-
-    public void setAbsoluteFilePath(String absoluteFilePath) {
-        this.absoluteFilePath = absoluteFilePath;
-    }
 
     public boolean deleteTransactionByIndex(int index) {
         if (index >= 0 && index < transactionList.size()) {
@@ -108,7 +94,6 @@ public class TransactionDataStore {
     public void reset() {
         transactionList.clear();
         fileName = "";
-        absoluteFilePath = "";
         totalProfits = 0.0;
         totalLoss = 0.0;
         profitOrLoss = 0.0;

@@ -1,4 +1,4 @@
-package edu.iit.erp.jfxgtds_2425607.models;
+package edu.iit.erp.jfxgtds_2425607.model;
 
 public class Transaction {
     private String itemCode;

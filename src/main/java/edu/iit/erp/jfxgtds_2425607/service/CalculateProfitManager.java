@@ -1,6 +1,7 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 
 import java.util.List;
 
@@ -53,7 +54,6 @@ public class CalculateProfitManager {
         }
         setProfits(profits);
         return profits;
-
     }
 
     public Double findLosses() {

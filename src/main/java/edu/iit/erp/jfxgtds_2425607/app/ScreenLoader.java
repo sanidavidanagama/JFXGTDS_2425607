@@ -1,7 +1,7 @@
 package edu.iit.erp.jfxgtds_2425607.app;
 
 import edu.iit.erp.jfxgtds_2425607.controllers.EditTransactionsController;
-import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
+import edu.iit.erp.jfxgtds_2425607.model.InvalidTransaction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,7 +31,7 @@ public class ScreenLoader {
             primaryStage.show();
         } catch (IOException e) {
             System.err.println("Failed to load " + fxmlFile);
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

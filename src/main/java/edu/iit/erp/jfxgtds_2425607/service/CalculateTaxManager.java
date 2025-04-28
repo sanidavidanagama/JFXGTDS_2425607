@@ -1,5 +1,7 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
+
 public class CalculateTaxManager {
 
     private Double tax;

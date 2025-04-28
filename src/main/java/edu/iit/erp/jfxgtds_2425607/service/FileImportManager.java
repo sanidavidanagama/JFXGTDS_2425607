@@ -1,6 +1,7 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 import edu.iit.erp.jfxgtds_2425607.utils.CSVUtil;
 import java.io.*;
 import java.util.ArrayList;
@@ -42,10 +43,6 @@ public class FileImportManager {
 
     public List<Transaction> getTransactionsList() {
         return transactionsList;
-    }
-
-    public void setTransactionsList(List<Transaction> transactionsList) {
-        this.transactionsList = transactionsList;
     }
 
     public void validateImportedFile() {
@@ -102,18 +99,4 @@ public class FileImportManager {
         );
         return transaction;
     }
-
-    public void loadData() {
-        setAbsoluteFilePath(TransactionDataStore.getInstance().getAbsoluteFilePath());
-        setFileName(TransactionDataStore.getInstance().getFileName());
-        setTransactionsList(TransactionDataStore.getInstance().getTransactionList());
-        if (getAbsoluteFilePath().isEmpty()) {
-            setStatusMessage("Please import a file with .csv format");
-
-        }
-        else {
-            setStatusMessage("File Imported Successfully.");
-        }
-    }
-
 }

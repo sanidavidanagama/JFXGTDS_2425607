@@ -1,20 +1,14 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
 import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
-import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
-import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
+import edu.iit.erp.jfxgtds_2425607.model.InvalidTransaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.ValidateTransactionsManager;
-import javafx.beans.Observable;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 
 import java.util.List;
@@ -97,6 +91,10 @@ public class ValidateTransactionsController {
     private final ValidateTransactionsManager manager = new ValidateTransactionsManager();
 
     public void initialize() {
+        refresh();
+    }
+
+    private void refresh() {
         validate();
         setupTableColumns();
         addActionButtonsToTable();
@@ -164,14 +162,14 @@ public class ValidateTransactionsController {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 manager.deleteInvalidTransaction(transaction);
-                initialize();
+                refresh();
             }
         });
     }
 
     private void openEditPopup(InvalidTransaction transaction) {
         ScreenLoader.openEditTransactionDialog(transaction);
-        initialize();
+        refresh();
     }
 
     public void validate() {

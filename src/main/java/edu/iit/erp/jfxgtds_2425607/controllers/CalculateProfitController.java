@@ -1,9 +1,8 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
-import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.CalculateProfitManager;
-import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -63,13 +62,12 @@ public class CalculateProfitController {
         TransactionDataStore.getInstance().setTotalProfits(manager.getProfits());
         TransactionDataStore.getInstance().setTotalLoss(manager.getLoss());
         TransactionDataStore.getInstance().setProfitOrLoss(manager.getProfitOrLoss());
-        ScreenLoader.loadCalculateTax();
     }
 
     @FXML
     void onDeleteZeroProfitButtonClick(ActionEvent event) {
         Integer deletedCount = manager.deleteZeroProfitTransactions();
-        deletedCountLabel.setText(deletedCount == 0 ? deletedCount  + " zero profit transactions have been deleted." : "No transactions have been deleted.");
+        deletedCountLabel.setText(deletedCount  + " zero profit transactions have been deleted." );
         deleteZeroProfitsButton.setDisable(true);
         initialize();
     }
@@ -84,8 +82,8 @@ public class CalculateProfitController {
 
     public void setupProfitInfo() {
         validatedTransactionsCountLabel.setText("Total Validated Transactions : "+ String.valueOf(TransactionDataStore.getInstance().getTransactionList().size()));
-        totalProfitsLabel.setText("Total Loss : " + manager.findProfits());
-        totalLossLabel.setText("Total Profits : " + manager.findLosses());
+        totalProfitsLabel.setText("Total Profits : " + manager.findProfits());
+        totalLossLabel.setText("Total Loss : " + manager.findLosses());
         finalProfitsLabel.setText("Final PnL : " + manager.findTotalProfitOrLoss());
     }
 
@@ -97,26 +95,5 @@ public class CalculateProfitController {
         quantity.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantity()));
         checksum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getChecksum()));
         profitOrLoss.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getProfit()));
-
-        // Set custom CellFactory for profitOrLoss column
-        profitOrLoss.setCellFactory(column -> new TableCell<Transaction, Double>() {
-            @Override
-            public void updateItem(Double profit, boolean empty) {
-                super.updateItem(profit, empty);
-
-                setText(null);
-                setStyle("");
-                if (!empty && profit != null) {
-                    setText(profit.toString());
-                    if (profit > 0) {
-                        setStyle("-fx-background-color: lightgreen; -fx-text-fill: black;");
-                    } else if (profit < 0) {
-                        setStyle("-fx-background-color: lightcoral; -fx-text-fill: black;");
-                    } else {
-                        setStyle("");
-                    }
-                }
-            }
-        });
     }
 }

@@ -1,8 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
-import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
-import edu.iit.erp.jfxgtds_2425607.utils.AppExceptions;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.utils.Checksum;
 
 public class EditTransactionManager {
@@ -19,7 +17,6 @@ public class EditTransactionManager {
     private boolean containsSpecialCharacter(String str) {
         return !str.matches("[a-zA-Z0-9]*");
     }
-
 
     public String validateItemPrice(String input) {
         try {
@@ -53,14 +50,10 @@ public class EditTransactionManager {
         }
     }
 
-
-
     public Transaction getUpdateTransaction(String itemCode, Double internalPrice, Double discountPrice, Double salePrice, Integer quantity) {
         String editedRecord = String.format("%s%s%s%s%s", itemCode, internalPrice, discountPrice, salePrice, quantity);
         Integer checksumForRecord =  checksum.findChecksum(editedRecord);
         return new Transaction(itemCode, internalPrice, discountPrice, salePrice, quantity, checksumForRecord);
     }
-
-
 
 }

@@ -1,16 +1,15 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
-import edu.iit.erp.jfxgtds_2425607.models.InvalidTransaction;
-import edu.iit.erp.jfxgtds_2425607.models.Transaction;
+import edu.iit.erp.jfxgtds_2425607.model.InvalidTransaction;
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.EditTransactionManager;
-import edu.iit.erp.jfxgtds_2425607.service.TransactionDataStore;
+import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import java.awt.event.KeyEvent;
 
 public class EditTransactionsController {
 
