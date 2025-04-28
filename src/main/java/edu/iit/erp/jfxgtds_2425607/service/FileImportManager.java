@@ -75,14 +75,15 @@ public class FileImportManager {
             return;
         }
         setFileName(file.getName());
-        storeData(getTransactionsList(), getFileName());
+        storeData(getTransactionsList(), getFileName(), getAbsoluteFilePath());
         setStatusMessage("File Imported Successfully.");
     }
 
 
-    private void storeData(List<Transaction> transactionList, String fileName) {
+    private void storeData(List<Transaction> transactionList, String fileName, String absoluteFilePath) {
         TransactionDataStore.getInstance().setTransactionList(transactionList);
         TransactionDataStore.getInstance().setFileName(fileName);
+        TransactionDataStore.getInstance().setAbsoluteFilePath(absoluteFilePath);
     }
 
 

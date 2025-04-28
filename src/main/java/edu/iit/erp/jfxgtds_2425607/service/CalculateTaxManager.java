@@ -71,7 +71,7 @@ public class CalculateTaxManager {
     }
 
     public void saveChanges() {
-        String fileName = TransactionDataStore.getInstance().getFileName();
+        String fileName = TransactionDataStore.getInstance().getAbsoluteFilePath();
         List<Transaction> transactions = TransactionDataStore.getInstance().getTransactionList();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Transaction t : transactions) {

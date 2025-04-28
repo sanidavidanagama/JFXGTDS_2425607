@@ -12,6 +12,8 @@ public class TransactionDataStore {
 
     private String fileName = "";
 
+    private String absoluteFilePath = "";
+
     private Double totalProfits = 0.0;
 
     private Double totalLoss = 0.0;
@@ -68,6 +70,13 @@ public class TransactionDataStore {
         this.profitOrLoss = profitOrLoss;
     }
 
+    public String getAbsoluteFilePath() {
+        return absoluteFilePath;
+    }
+
+    public void setAbsoluteFilePath(String absoluteFilePath) {
+        this.absoluteFilePath = absoluteFilePath;
+    }
 
     public boolean deleteTransactionByIndex(int index) {
         if (index >= 0 && index < transactionList.size()) {

@@ -58,7 +58,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="150.0" prefWidth="1280.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-button-bar">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="calculate-tax-input-container">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onCompleteButtonClick" styleClass="next-page-button" text="Complete" />
                         <Button fx:id="saveChangesButton" mnemonicParsing="false" onAction="#onSaveChangesButtonClick" styleClass="next-page-button" text="Save Changes" />
