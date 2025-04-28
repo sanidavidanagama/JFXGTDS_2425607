@@ -3,7 +3,7 @@ package edu.iit.erp.jfxgtds_2425607.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/* Design Pattern - Singleton Design Pattern */
+/* Singleton Class */
 
 public class TransactionDataStore {
     private static TransactionDataStore instance;

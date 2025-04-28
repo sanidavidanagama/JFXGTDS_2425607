@@ -4,6 +4,7 @@ import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
 import edu.iit.erp.jfxgtds_2425607.service.CalculateTaxManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -27,6 +28,9 @@ public class CalculateTaxController {
     @FXML
     private Label taxRateErrorLabel;
 
+    @FXML
+    private Button saveChangesButton;
+
     private final CalculateTaxManager manager = new CalculateTaxManager();
 
     @FXML
@@ -44,6 +48,12 @@ public class CalculateTaxController {
     void onCompleteButtonClick(ActionEvent event) {
         manager.resetAll();
         ScreenLoader.loadHomePage();
+    }
+
+    @FXML
+    void onSaveChangesButtonClick(ActionEvent event) {
+        manager.saveChanges();
+        saveChangesButton.setDisable(true);
     }
 
     public void initialize() {

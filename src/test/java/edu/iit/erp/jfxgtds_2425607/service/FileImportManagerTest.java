@@ -83,5 +83,4 @@ public class FileImportManagerTest {
         assertEquals(10, transaction.getQuantity());
         assertEquals(12345, transaction.getChecksum());
     }
-
 }

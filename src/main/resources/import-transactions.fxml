@@ -44,7 +44,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="250.0">
                      <children>
-                        <Label prefWidth="400.0" styleClass="file-name-label" text="File Name" />
+                        <Label prefWidth="400.0" styleClass="file-name-label" text="File Path" />
                         <TextField fx:id="filePathInput" prefHeight="26.0" prefWidth="600.0" styleClass="file-path-input" />
                         <Label fx:id="statusMessageLabel" text="Please import a file with .csv format" wrapText="true" />
                         <Label fx:id="fileNameLabel" />

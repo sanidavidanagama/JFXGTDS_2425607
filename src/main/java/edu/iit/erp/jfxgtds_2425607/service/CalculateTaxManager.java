@@ -1,6 +1,13 @@
 package edu.iit.erp.jfxgtds_2425607.service;
 
+import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class CalculateTaxManager {
 
@@ -61,5 +68,19 @@ public class CalculateTaxManager {
 
     public void resetAll() {
         TransactionDataStore.getInstance().reset();
+    }
+
+    public void saveChanges() {
+        String fileName = TransactionDataStore.getInstance().getFileName();
+        List<Transaction> transactions = TransactionDataStore.getInstance().getTransactionList();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Transaction t : transactions) {
+                String line = String.format("%s,%s,%s,%s,%s,%s", t.getItemCode(), t.getInternalPrice(), t.getDiscountPrice(), t.getSalePrice(), t.getQuantity(), t.getChecksum());
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package edu.iit.erp.jfxgtds_2425607.controllers;
 
+import edu.iit.erp.jfxgtds_2425607.app.ScreenLoader;
 import edu.iit.erp.jfxgtds_2425607.model.Transaction;
 import edu.iit.erp.jfxgtds_2425607.service.CalculateProfitManager;
 import edu.iit.erp.jfxgtds_2425607.model.TransactionDataStore;
@@ -62,6 +63,7 @@ public class CalculateProfitController {
         TransactionDataStore.getInstance().setTotalProfits(manager.getProfits());
         TransactionDataStore.getInstance().setTotalLoss(manager.getLoss());
         TransactionDataStore.getInstance().setProfitOrLoss(manager.getProfitOrLoss());
+        ScreenLoader.loadCalculateTax();
     }
 
     @FXML

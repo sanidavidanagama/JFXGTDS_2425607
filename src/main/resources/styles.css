@@ -493,6 +493,11 @@
     -fx-padding: 8;
 }
 
+.calculate-tax-row-container {
+    -fx-spacing: 15px;
+    -fx-padding: 15px;
+}
+
 
 
 
