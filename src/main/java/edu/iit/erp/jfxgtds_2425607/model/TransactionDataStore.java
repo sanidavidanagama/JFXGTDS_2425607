@@ -37,7 +37,6 @@ public class TransactionDataStore {
         this.transactionList = list;
     }
 
-
     public String getFileName() {
         return fileName;
     }

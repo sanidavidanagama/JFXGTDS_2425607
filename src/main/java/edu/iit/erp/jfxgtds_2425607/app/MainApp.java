@@ -7,8 +7,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        ScreenLoader.setPrimaryStage(primaryStage); // Set the main stage
-        ScreenLoader.loadHomePage(); // Load the home page using your ScreenLoader
+        ScreenLoader.setPrimaryStage(primaryStage);
+        ScreenLoader.loadHomePage();
     }
 
     public static void main(String[] args) {
